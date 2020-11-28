@@ -1,0 +1,219 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+    padding-top: 56px;
+}
+.img-fluid {
+    height: 350px;
+    width: 900px;
+}
+.booking {
+    color: #fff;
+}
+.content-yard {
+    text-align: justify;
+    text-justify: inter-word;
+}
+.location p {
+    float: left;
+    font-style: italic;
+    padding-right: 20px;
+}
+.avatar-cmt {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+a {
+    color: #47649f;
+}
+
+body {
+    font-family: "helvetica";
+}
+
+/*-- Bootstrap Override Style --*/
+
+/*-- Content Style --*/
+.post-footer-option li {
+    float: left;
+    margin-right: 50px;
+    padding-bottom: 15px;
+}
+
+.post-footer-option li a {
+    color: #afb4bd;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.photo-profile {
+    border: 1px solid #ddd;
+}
+
+.anchor-username h4 {
+    font-weight: bold;
+    padding: 5px 0 0 20px;
+}
+
+.anchor-time {
+    color: #adb2bb;
+    font-size: 1.2rem;
+}
+
+.post-footer-comment-wrapper {
+    background-color: #f6f7f8;
+}
+
+/*-- Css --*/
+.btn-booking {
+    display: block;
+}
+
+.datatime,
+.hours,
+.type {
+    width: 350px;
+    height: 35px;
+    margin-left: 35px;
+    outline: none;
+}
+
+.yard {
+    margin: 10px 0;
+}
+
+.yard a {
+    width: 60px;
+}
+
+.container-comment {
+    padding-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-footer .comment-input {
+    border-radius: 20px;
+    height: 45px;
+}
+
+.post-footer .submit-comment {
+    border-radius: 6px;
+    border: none;
+    background-color: #477bc4;
+    color: #fff;
+    padding: 6px 10px;
+    display: block;
+    width: 80px;
+    color: 12px;
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+.post-footer .comment img {
+    border-radius: 5px;
+}
+
+.media-body {
+    position: relative;
+}
+
+.media-body .reply {
+    color: #477bc4;
+    position: absolute;
+    right: 30px;
+    display: block;
+}
+
+.comment-child {
+    padding: 10px 15px 10px 50px;
+    display: none;
+}
+
+.comment-child .head h5 {
+    display: inline-block;
+}
+
+.form-comment {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-input-child {
+    margin-top: 20px;
+}
+
+.submit-comment-child {
+    display: none;
+}
+
+/* ------- BOOKING -------  */
+
+.box-booking {
+    padding: 5px;
+}
+
+.box-booking .head {
+    padding: 90px 0 0 10px;
+}
+
+.box-booking .content {
+    padding: 8px;
+}
+
+.table-booking,
+th,
+td {
+    border: 1px solid #dfdfdf;
+    border-collapse: collapse;
+}
+
+.table-booking {
+    width: 100%;
+}
+
+.table-booking th {
+    width: 10%;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+th:nth-child(1) span {
+    cursor: pointer;
+}
+
+td:nth-child(2) {
+    height: 100px;
+}
+
+td:nth-child(2) .box-img {
+    border: 1px solid;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.box-booking .footer-booking .total {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px 0 0;
+}
+
+.box-booking .footer-booking .booking {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.body {
+    min-height: 90%;
+}
