@@ -217,3 +217,111 @@ td:nth-child(2) .box-img {
 .body {
     min-height: 90%;
 }
+
+/* form sign up */
+form {
+    width: 100%;
+    padding-left: 45px;
+}
+.signup-title{
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-top: 35px;
+}
+.form-group {
+display: flex; }
+.form-group .form-wrapper {
+    width: 100%; }
+    .form-group .form-wrapper:first-child {
+    margin-right: 70px; }
+
+.form-wrapper {
+margin-bottom: 17px; }
+.form-wrapper label {
+    margin-bottom: 9px;
+    display: block; }
+
+.form-control {
+border: 1px solid #ccc;
+display: block;
+width: 100%;
+height: 40px;
+padding: 0 20px;
+border-radius: 20px;
+font-family: "Muli-Bold";
+background: none; }
+.form-control:focus {
+    border: 1px solid #3FE0D0; }
+
+.signup {
+border: none;
+width: 152px;
+height: 40px;
+margin: auto;
+margin-top: 29px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+background: #3FE0D0;
+font-size: 13px;
+color: #fff;
+text-transform: uppercase;
+font-family: "Muli-SemiBold";
+border-radius: 20px;
+overflow: hidden;
+-webkit-transform: perspective(1px) translateZ(0);
+transform: perspective(1px) translateZ(0);
+box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+position: relative;
+-webkit-transition-property: color;
+transition-property: color;
+-webkit-transition-duration: 0.5s;
+transition-duration: 0.5s; }
+button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f11a09;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; }
+button:hover:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
+
+@media (max-width: 991px) {
+.inner {
+    min-width: 768px; } }
+@media (max-width: 767px) {
+.inner {
+    min-width: auto;
+    background: none;
+    padding-top: 0;
+    padding-bottom: 0; }
+
+form {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px; }
+}
+
+.error{
+    color: #f11a09;
+}
+/* end form signup */
