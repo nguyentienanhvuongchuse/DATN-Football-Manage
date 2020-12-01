@@ -1,0 +1,20 @@
+{% extends "base/index.html"%}
+{% block title %} Login {% endblock title%}
+{% block content %}
+<div class="col-lg-9">
+    <form method="POST" id="signup_form">
+        {% csrf_token %}
+        <div class="title-form"><h3>Login</h3></div>
+        <div class="form-wrapper">
+            <label for="">Username</label>
+            <input type="text" name="username" placeholder="Username" class="form-control">
+        </div>
+        <div class="form-wrapper">
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder="Password" class="form-control">
+        </div>
+        <button type="submit" class="signup">Login</button>
+    </form>
+    <p>If you does not have account? <a href="{% url "signup" %}">Click here</a></p>
+</div>
+{% endblock content%}
