@@ -4,31 +4,29 @@
 <div class="col-lg-9">
     <form method="POST" id="signup_form">
         {% csrf_token %}
-        <h3>Registration Form</h3>
-        <div class="form-group">
-            <div class="form-wrapper">
-                <label for="">First Name</label>
-                {{form.first_name}}
-            </div>
-            <div class="form-wrapper">
-                <label for="">Last Name</label>
-                {{form.last_name}}
-            </div>
-        </div>
+        <div class="title-form"><h3>Registration Form</h3></div>
         <div class="form-wrapper">
-            <label for="">Username</label>
+            <label>Username</label>
             {{form.username}}
         </div>
         <div class="form-wrapper">
-            <label for="">Email</label>
+            <label>First Name</label>
+            {{form.first_name}}
+        </div>
+        <div class="form-wrapper">
+            <label>Last Name</label>
+            {{form.last_name}}
+        </div>
+        <div class="form-wrapper">
+            <label>Email</label>
             {{form.email}}
         </div>
         <div class="form-wrapper">
-            <label for="">Password</label>
+            <label>Password</label>
             {{form.password1}}
         </div>
         <div class="form-wrapper">
-            <label for="">Confirm Password</label>
+            <label>Confirm Password</label>
             {{form.password2}}
         </div>
         <button type="submit" class="signup">Register Now</button>
