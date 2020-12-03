@@ -49,6 +49,7 @@
     </div>
 
     <div class="row">
+        {% for location in location%}
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
                 <a href="#"
@@ -56,10 +57,10 @@
                 >
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Sân bóng số 1</a>
+                        <a href="{% url "detail" location.id %}">{{ location.name }}</a>
                     </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">Location</p>
+                    <h5>{{ location.phone }}</h5>
+                    <p class="card-text">{{ location.address }}</p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted"
@@ -68,108 +69,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"
-                    ><img class="card-img-top" src="{% static "images/anh03.jpg"%}" alt="" /></a
-                >
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Sân bóng số 2</a>
-                    </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">
-                        Location Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted"
-                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
-                    >
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"
-                    ><img class="card-img-top" src="{% static "images/anh03.jpg"%}" alt="" /></a
-                >
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Sân bóng số 3</a>
-                    </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">Location</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted"
-                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
-                    >
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"
-                    ><img class="card-img-top" src="{% static "images/anh03.jpg" %}" alt="" /></a
-                >
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Sân bóng số 4</a>
-                    </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">Location</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted"
-                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
-                    >
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"
-                    ><img class="card-img-top" src="{% static "images/anh03.jpg"%}" alt="" /></a
-                >
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Sân bóng số 5</a>
-                    </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">Location</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted"
-                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
-                    >
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"
-                    ><img class="card-img-top" src="{% static "images/anh03.jpg" %}" alt="" /></a
-                >
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Sân bóng số 6</a>
-                    </h4>
-                    <h5>SDT:</h5>
-                    <p class="card-text">Location</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted"
-                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
-                    >
-                </div>
-            </div>
-        </div>
+        {% endfor%}
     </div>
 </div>
 {% endblock content %}

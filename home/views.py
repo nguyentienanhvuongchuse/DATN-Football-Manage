@@ -4,16 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from .form import CreateUserForm
+from yard.models import *
 # Create your views here.
 
 def home(request):
-    return render(request, "base/home.html")
+    location = Location.objects.all()
+    context = {"location": location}
+    return render(request, "base/home.html", context)
 
 def order(request):
     return render(request, "base/order.html")
 
-def detail(request):
-    return render(request, "base/detail.html")
+def detail(request, pk):
+    detail = Location.objects.get(id=pk)
+    context = {"detail":detail}
+    return render(request, "base/detail.html", context)
 
 def contact(request):
     return HttpResponse("Contact page")
