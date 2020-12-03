@@ -37,6 +37,9 @@ class Yard(models.Model):
     create_at = models.DateField(auto_now_add=True,blank=True)
     update_at = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return self.code
+
 class Time(models.Model):
     TIME = (
         ("5","5:00"),
@@ -63,3 +66,6 @@ class Time(models.Model):
     cost = models.CharField(max_length=255)
     create_at = models.DateField(auto_now_add=True,blank=True)
     update_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.time
