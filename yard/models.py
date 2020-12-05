@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Location(models.Model):
@@ -18,7 +20,7 @@ class Location(models.Model):
     phone = models.CharField(max_length=11)
     address = models.CharField(max_length=255)
     district = models.CharField(max_length=255, choices=DISTRIC)
-    description = models.TextField()
+    description = RichTextUploadingField()
     create_at = models.DateField(auto_now_add=True,blank=True)
     update_at = models.DateField(auto_now=True)
 
