@@ -1,0 +1,31 @@
+{% extends "base/index.html" %}
+{% block title%} Detail {% endblock title%}
+{% block content%}
+    <div class="col-lg-9 content">
+        <table class="table">
+
+            <h3>
+            <a href="{% url "detail" yard.location.id%}">{{yard.location.name}}</a>
+            | {{yard.code}}</h3>
+
+            <thead>
+                <tr>
+                <th scope="col">Thoi gian</th>
+                <th scope="col">Gia (vnd)</th>
+                <th scope="col">Trang thai</th>
+                <th scope="col">Dat san</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for time in time %}
+                <tr class="list-ul">
+                    <td>{{time.time}}</td>
+                    <td>{{time.cost}}</td>
+                    <td>OPEN</td>
+                    <td><a href="{% url "booking_yard" time.id%}" class="btn btn-success">Booking</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content%}

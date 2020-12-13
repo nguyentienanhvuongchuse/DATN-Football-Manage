@@ -289,7 +289,6 @@ button:before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #f11a09;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 0 50%;
@@ -329,3 +328,12 @@ form {
     text-align: center;
 }
 /* end form signup */
+.content{
+    margin-top: 20px;
+}
+.yard-booking{
+
+}
+.show-detail{
+    display: none;
+}

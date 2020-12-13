@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'home',
     'yard',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
