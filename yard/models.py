@@ -15,9 +15,9 @@ class Location(models.Model):
         ("HV","Huyện Hoà Vang"),
         ("HS","Huyện Hoàng Sa")
     )
-    user_id = models.ForeignKey(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=11)
+    phone = models.CharField(max_length=15)
     address = models.CharField(max_length=255)
     district = models.CharField(max_length=255, choices=DISTRIC)
     description = RichTextUploadingField()
@@ -33,7 +33,7 @@ class Yard(models.Model):
         ("7", "7 người"),
         ("11", "11 người")
     )
-    location_id = models.ForeignKey(Location, null=True, on_delete = models.CASCADE)
+    location = models.ForeignKey(Location, null=True, on_delete = models.CASCADE)
     code = models.CharField(max_length=255)
     type = models.CharField(max_length=255, choices=TYPE)
     create_at = models.DateField(auto_now_add=True,blank=True)
@@ -44,26 +44,26 @@ class Yard(models.Model):
 
 class Time(models.Model):
     TIME = (
-        ("5","5:00"),
-        ("6","6:00"),
-        ("7","7:00"),
-        ("8","8:00"),
-        ("9","9:00"),
-        ("10","10:00"),
-        ("11","11:00"),
-        ("12","12:00"),
-        ("13","13:00"),
-        ("14","14:00"),
-        ("15","15:00"),
-        ("16","16:00"),
-        ("17","17:00"),
-        ("18","18:00"),
-        ("19","19:00"),
-        ("20","20:00"),
-        ("21","21:00"),
-        ("22","22:00")
+        ("5:00","5:00"),
+        ("6:00","6:00"),
+        ("7:00","7:00"),
+        ("8:00","8:00"),
+        ("9:00","9:00"),
+        ("10:00","10:00"),
+        ("11:00","11:00"),
+        ("12:00","12:00"),
+        ("13:00","13:00"),
+        ("14:00","14:00"),
+        ("15:00","15:00"),
+        ("16:00","16:00"),
+        ("17:00","17:00"),
+        ("18:00","18:00"),
+        ("19:00","19:00"),
+        ("20:00","20:00"),
+        ("21:00","21:00"),
+        ("22:00","22:00")
     )
-    yard_id = models.ForeignKey(Yard, null=True, on_delete=models.CASCADE)
+    yard = models.ForeignKey(Yard, null=True, on_delete=models.CASCADE)
     time = models.CharField(max_length=255, choices=TIME)
     cost = models.CharField(max_length=255)
     create_at = models.DateField(auto_now_add=True,blank=True)

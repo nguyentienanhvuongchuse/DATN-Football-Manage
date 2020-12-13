@@ -1,6 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.views.generic.edit import CreateView
 from django import forms
+from django.forms.widgets import HiddenInput
+from django.forms import ModelForm
+from .models import *
 
 class CreateUserForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text="Optional.")
@@ -19,3 +23,8 @@ class CreateUserForm(UserCreationForm):
         self.fields["email"].widget.attrs.update({"class" : "form-control"})
         self.fields["password1"].widget.attrs.update({"class" : "form-control"})
         self.fields["password2"].widget.attrs.update({"class" : "form-control"})
+
+class BookingYardForm(ModelForm):
+    class Meta:
+        model = Booking
+        fields = ["time","user","note"]

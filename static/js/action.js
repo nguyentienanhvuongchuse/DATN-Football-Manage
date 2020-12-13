@@ -14,7 +14,7 @@ $(document).ready(function(){
             },
             password2:{
                 required: true,
-                equalTo: "#pw"
+                equalTo: "#id_password1"
             }
         },
         messages: {
@@ -33,3 +33,15 @@ $(document).ready(function(){
         }
     });
 });
+
+var countClick = 0;
+$(document).ready(function() {
+$('.yard-booking').click(function() {
+    countClick++;
+    if(countClick % 2 === 1) {
+    $('.show-detail').show()
+    }else {
+    $('.show-detail').hide()
+    }
+})
+})

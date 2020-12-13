@@ -9,9 +9,6 @@
           <table class="table-booking">
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"> Yard Name </th>
                 <th scope="col"> Yard Code </th>
                 <th scope="col"> Yard Type </th>
                 <th scope="col"> Time </th>
@@ -20,38 +17,16 @@
               </tr>
             </thead>
             <tbody>
+
+              {% for cart in cart%}
               <tr>
-                <th scope="row">
-                  <span> Xóa </span>
-                </th>
-                <td>
-                  <div class="box-img">
-                    <img src="" alt="Not img">
-                  </div>
-                </td>
-                <td> Yard A </td>
-                <td> JAVA </td>
-                <td> 5 </td>
-                <td> 17:00 </td>
-                <td> 10/11/2020 </td>
+                <td> {{cart.status}} </td>
+                <td> {{cart.note}} </td>
+                <td> {{cart.time.time}} </td>
+                <td> {{cart.date_created}} </td>
                 <td> 10$ </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <span> Xóa </span>
-                </th>
-                <td>
-                  <div class="box-img">
-                    <img src="" alt="Not img">
-                  </div>
-                </td>
-                <td> Yard B</td>
-                <td> JAVB </td>
-                <td> 5 </td>
-                <td> 17:00 </td>
-                <td> 10/11/2020 </td>
-                <td> 10$ </td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

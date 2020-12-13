@@ -8,64 +8,13 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="" class="form-group">
-        <label>Date</label>
-        <input id="datetime" type="date" name="book_date" class="datatime">
-        <br>
-        <label for="hours">Time</label>
+        {% for yard in yard %}
+        <a href="{% url "time_booking" yard.id %}" class="btn btn-primary yard-booking">{{ yard.code }}</a>
+        {% endfor %}
+        <br><hr>
+        <div class="show-detail">
 
-        <select name="hours" id="hours" class="hours">
-            <option value="5">5h</option>
-            <option value="6">6h</option>
-            <option value="7">7h</option>
-            <option value="8">8h</option>
-        </select>
-
-        <br>
-        <label for="type">Type</label>
-
-        <select name="type" id="type" class="type">
-            <option value="5">5</option>
-            <option value="6">7</option>
-            <option value="7">11</option>
-        </select>
-        <hr>
-        <label>San bong A</label>
-        <div class="row">
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">1</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">2</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">3</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">4</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">5</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">6</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">7</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">8</a>
-            </div>
-            <div class="col-xl-2 yard">
-            <a class="btn btn-primary" href="#">9</a>
-            </div>
         </div>
-        <hr>
-        <div class="col-xl-12 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary mr-3">Booking</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        </form>
     </div>
     </div>
 </div>
