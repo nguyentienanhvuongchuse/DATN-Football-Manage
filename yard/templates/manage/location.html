@@ -1,0 +1,13 @@
+{% extends "manage/index.html" %}
+{% block title %} Location Manage {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{form.media}}
+            {{form}}
+            <input type="submit" class="btn btn-success" value="Save">
+        </form>
+    </div>
+{% endblock %}
