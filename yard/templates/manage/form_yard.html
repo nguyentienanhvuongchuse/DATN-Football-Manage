@@ -4,7 +4,7 @@
 {% block content%}
     <div class="col-lg-9 content">
         <form method="POST">
-            <a href="{% url "update_time" yard.id %}" class="btn btn-info">Gia tien</a>
+            <a href="{% url "create_time" yard.id %}" class="btn btn-info">Gia tien</a>
             <br>
             {% csrf_token %}
             {{form}}
