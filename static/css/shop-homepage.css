@@ -337,3 +337,6 @@ form {
 .show-detail{
     display: none;
 }
+[name="location"] {
+    display: none;
+}

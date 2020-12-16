@@ -1,0 +1,40 @@
+{% extends "manage/index.html" %}
+{% block title %} Time {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <table class="table border-bodered table-manager">
+            <thead>
+                <tr>
+                <th scope="col"> Thoi Gian </th>
+                <th scope="col"> Gia tien </th>
+                <th scope="col"> Tuy chon </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for time in time%}
+                <tr>
+                    <td> {{time.time}} </td>
+                    <td> {{time.cost}} </td>
+                    <td>
+                        <a href="#" class="btn btn-primary"> Sua </a>
+                        <a href="#" class="btn btn-danger"> Xoa </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Them moi</h2>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.management_form }}
+            {% for field in form %}
+                {{field}}
+                <hr>
+            {% endfor %}
+
+            <input type="submit" name="Submit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
