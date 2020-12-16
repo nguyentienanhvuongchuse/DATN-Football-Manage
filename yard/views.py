@@ -77,5 +77,26 @@ def time_cost(request,pk):
     context = {"time":time, "form":formset}
     return render(request, "manage/time.html",context)
 
+def update_timecost(request,pk):
+    time = Time.objects.get(id=pk)
+    yard = time.yard_id
+    form = TimeCostForm(instance=time)
+    if request.method == "POST":
+        form = TimeCostForm(request.POST, instance=time)
+        if form.is_valid():
+            form.save()
+            return redirect("create_time", pk=yard)
+    context = {"form":form, "time":time}
+    return render(request, "manage/update_time.html", context)
+
+def update_timecost(request,pk):
+    time = Time.objects.get(id=pk)
+    yard = time.yard_id
+    if request.method == "POST":
+        time.delete()
+        return redirect("create_time", pk=yard)
+    context = {"time":time}
+    return render(request, "manage/delete_time.html", context)
+
 def statistical(request):
     return HttpResponse("Statistical")

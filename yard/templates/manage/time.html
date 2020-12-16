@@ -17,8 +17,8 @@
                     <td> {{time.time}} </td>
                     <td> {{time.cost}} </td>
                     <td>
-                        <a href="#" class="btn btn-primary"> Sua </a>
-                        <a href="#" class="btn btn-danger"> Xoa </a>
+                        <a href="{% url "update_time" time.id%}" class="btn btn-primary"> Sua </a>
+                        <a href="{% url "delete_time" time.id%}" class="btn btn-danger"> Xoa </a>
                     </td>
                 </tr>
                 {% endfor %}
