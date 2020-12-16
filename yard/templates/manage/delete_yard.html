@@ -1,0 +1,20 @@
+{% extends "manage/index.html" %}
+{% block title %} Delete yard {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <form method="POST">
+            <div class="card text-center">
+                <div class="card-header">
+                    Bạn có chắc chắn muốn xóa sân
+                </div>
+                <div>{{yard.code}}</div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    <input type="submit" value="ok" class="btn btn-danger">
+                    <a href="{% url "manage_yard" %}" class="btn btn-primary">Tro ve</a>
+                </div>
+                </div>
+        </form>
+    </div>
+{% endblock %}

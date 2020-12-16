@@ -1,0 +1,13 @@
+{% extends "manage/index.html" %}
+{% block title %} New yard {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <form method="POST">
+            <br>
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

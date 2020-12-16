@@ -1,0 +1,33 @@
+{% extends "manage/index.html" %}
+{% block title %} Yard Manage {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <div class="card card-total">
+            <div class="card-body">
+                <a href="{% url "create_yard" %}" class="btn btn-primary">Them moi</a>
+            </div>
+        </div>
+        <table class="table border-bodered table-manager">
+            <thead>
+            <tr>
+                <th scope="col"> Ma san </th>
+                <th scope="col"> Loai san </th>
+                <th scope="col"> Tuy chon </th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for yard in yard%}
+            <tr>
+                <td> {{yard.code}} </td>
+                <td> {{yard.type}} </td>
+                <td>
+                    <a href="{% url "update_yard" yard.id %}" class="btn btn-success">Sua</a>
+                    <a href="{% url "delete_yard" yard.id %}" class="btn btn-danger">Xoa</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+    </div>
+{% endblock %}
