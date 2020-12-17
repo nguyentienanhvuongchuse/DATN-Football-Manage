@@ -1,0 +1,10 @@
+{% extends "manage/index.html" %}
+{% block title %} Booking yard {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        {% for booking in booking %}
+            {{booking.id}}
+        {% endfor %}
+    </div>
+{% endblock %}

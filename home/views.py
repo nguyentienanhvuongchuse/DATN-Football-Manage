@@ -6,13 +6,15 @@ from django.contrib.auth import login, authenticate, logout
 from django.forms import inlineformset_factory
 from .form import CreateUserForm, BookingYardForm
 from yard.models import *
-from .filters import YardFilter
+from .filters import LocationFilter
 from .models import *
 # Create your views here.
 
 def home(request):
     location = Location.objects.all()
-    context = {"location": location}
+    myFilter = LocationFilter(request.GET, queryset=location)
+    location = myFilter.qs
+    context = {"location": location, "myFilter":myFilter}
     return render(request, "base/home.html", context)
 
 def detail(request, pk):
