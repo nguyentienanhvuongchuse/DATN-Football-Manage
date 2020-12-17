@@ -2,11 +2,22 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from .forms import *
+from home.models import *
 from .models import *
 # Create your views here.
 
 def booking(request):
-    return HttpResponse("Booking")
+    current_user = request.user.id
+    location = Location.objects.get(user=current_user)
+
+    booking = Booking.objects.raw(
+        "SELECT yard_time.id"
+        "from yard_yard join yard_time on yard_yard.id = yard_time.yard_id join home_booking on yard_time.id = home_booking.time_id"
+        "where yard_yard.location_id=2"
+    )
+
+    context = {"booking":booking}
+    return render(request, "manage/booking.html",context)
 
 def manage_location(request):
     current_user = request.user.id

@@ -3,8 +3,8 @@ from django_filters import CharFilter
 
 from yard.models import *
 
-class YardFilter(django_filters.FilterSet):
-
+class LocationFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name',lookup_expr="icontains",label="Tên sân")
     class Meta:
-        model = Yard
-        fields = ["code"]
+        model = Location
+        fields = ["name"]
