@@ -5,13 +5,13 @@
     <div class="col-lg-9 content">
         <div class="row status">
             <div class="col-lg-3 status-yard">
-                <a href="{% url "manage_booking"%}"><b><u>San Xu ly</u></b></a>
+                <a href="{% url "manage_booking"%}">San Xu ly</a>
             </div>
             <div class="col-lg-3 status-yard">
                 <a href="{% url "location_accept"%}">San xac nhan</a>
             </div>
             <div class="col-lg-3 status-yard">
-                <a href="{% url "location_open"%}">San trong</a>
+                <a href="{% url "location_open"%}"><b><u>San trong</u></b></a>
             </div>
             <div class="col-lg-3 status-yard">
                 <a href="{% url "location_close"%}">San tu choi</a>
@@ -20,10 +20,8 @@
         <table class="table border-bodered table-manager">
             <thead>
             <tr>
-                <th scope="col"> Nguoi thue </th>
                 <th scope="col"> Loai san </th>
                 <th scope="col"> Gio </th>
-                <th scope="col"> Ngay </th>
                 <th scope="col"> Trang thai </th>
                 <th scope="col"> Xu ly </th>
             </tr>
@@ -31,13 +29,11 @@
         <tbody>
             {% for booking in booking %}
             <tr>
-                <td> {{booking.user}} </td>
                 <td> {{booking.code}} </td>
                 <td> {{booking.time}} </td>
-                <td> {{booking.date|date:"d-m-Y"}} </td>
                 <td> {{booking.status}} </td>
                 <td>
-                    {% include "manage/handle.html" %}
+                    <a href="#" class="btn btn-danger">Xu ly</a>
                 </td>
             </tr>
             {% endfor %}
