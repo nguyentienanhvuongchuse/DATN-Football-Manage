@@ -340,3 +340,11 @@ form {
 [name="location"] {
     display: none;
 }
+.status{
+    background-color: #d5f3de;
+    padding: 20px;
+    margin: auto;
+}
+.status-yard{
+    text-align: center;
+}

@@ -5,10 +5,10 @@
     <div class="col-lg-9 content">
         <div class="row status">
             <div class="col-lg-3 status-yard">
-                <a href="{% url "manage_booking"%}"><b><u>San Xu ly</u></b></a>
+                <a href="{% url "manage_booking"%}">San Xu ly</a>
             </div>
             <div class="col-lg-3 status-yard">
-                <a href="{% url "location_accept"%}">San xac nhan</a>
+                <a href="{% url "location_accept"%}"><b><u>San Xac nhan</u></b></a>
             </div>
             <div class="col-lg-3 status-yard">
                 <a href="{% url "location_open"%}">San trong</a>
@@ -24,7 +24,6 @@
                 <th scope="col"> Loai san </th>
                 <th scope="col"> Gio </th>
                 <th scope="col"> Ngay </th>
-                <th scope="col"> Trang thai </th>
                 <th scope="col"> Xu ly </th>
             </tr>
         </thead>
@@ -35,7 +34,6 @@
                 <td> {{booking.code}} </td>
                 <td> {{booking.time}} </td>
                 <td> {{booking.date|date:"d-m-Y"}} </td>
-                <td> {{booking.status}} </td>
                 <td>
                     {% include "manage/handle.html" %}
                 </td>

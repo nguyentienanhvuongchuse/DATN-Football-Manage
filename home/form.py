@@ -27,4 +27,4 @@ class CreateUserForm(UserCreationForm):
 class BookingYardForm(ModelForm):
     class Meta:
         model = Booking
-        fields = ["time","user","note"]
+        fields = ["time","user","date"]
