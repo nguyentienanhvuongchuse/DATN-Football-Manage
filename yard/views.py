@@ -9,15 +9,35 @@ from .models import *
 def booking(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
-
-    booking = Booking.objects.raw(
-        "SELECT yard_time.id"
-        "from yard_yard join yard_time on yard_yard.id = yard_time.yard_id join home_booking on yard_time.id = home_booking.time_id"
-        "where yard_yard.location_id=2"
-    )
-
+    booking = BookingView.objects.filter(location=location, status="XL")
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        data = Booking.objects.get(id=booking_id)
+        data.status = request.POST["handle"]
+        data.save()
     context = {"booking":booking}
     return render(request, "manage/booking.html",context)
+
+def booking_open(request):
+    current_user = request.user.id
+    location = Location.objects.get(user=current_user)
+    booking = BookingView.objects.filter(location=location, status="M")
+    context = {"booking":booking}
+    return render(request, "manage/booking_open.html",context)
+
+def booking_close(request):
+    current_user = request.user.id
+    location = Location.objects.get(user=current_user)
+    booking = BookingView.objects.filter(location=location, status="TC")
+    context = {"booking":booking}
+    return render(request, "manage/booking_close.html",context)
+
+def booking_accept(request):
+    current_user = request.user.id
+    location = Location.objects.get(user=current_user)
+    booking = BookingView.objects.filter(location=location, status="XN")
+    context = {"booking":booking}
+    return render(request, "manage/booking_accept.html",context)
 
 def manage_location(request):
     current_user = request.user.id

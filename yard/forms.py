@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import *
+from home.models import *
 
 class LocationForm(ModelForm):
     class Meta:
@@ -43,3 +44,8 @@ class TimeCostForm(ModelForm):
         super(TimeCostForm, self).__init__(*args, **kwargs)
         self.fields["time"].widget.attrs.update({"class" : "form-control"})
         self.fields["cost"].widget.attrs.update({"class" : "form-control"})
+
+class HandleBooking(ModelForm):
+    class Meta:
+        models = Booking
+        field = "status"
