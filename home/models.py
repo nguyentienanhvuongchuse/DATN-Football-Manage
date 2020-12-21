@@ -21,6 +21,14 @@ class Booking(models.Model):
     def price(self):
         return self.time.cost
 
+class DetailUser(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    phone = models.CharField(max_length=15)
+    address = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        return self.user.username
+
 class BookingView(models.Model):
     id = models.BigIntegerField(primary_key=True)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
