@@ -4,30 +4,40 @@
 <div class="col-lg-9">
     <form method="POST" id="signup_form">
         {% csrf_token %}
-        <div class="title-form"><h3>Registration Form</h3></div>
-        <div class="form-wrapper">
-            <label>Username</label>
-            {{form.username}}
+        <h3>Registration Form</h3>
+        <div class="form-group">
+            <div class="form-wrapper">
+                <label for="">First Name</label>
+                <input type="text" class="form-control" name="firstname" id="firstname">
+            </div>
+            <div class="form-wrapper">
+                <label for="">Last Name</label>
+                <input type="text" class="form-control" name="lastname">
+            </div>
         </div>
         <div class="form-wrapper">
-            <label>First Name</label>
-            {{form.first_name}}
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="username">
         </div>
         <div class="form-wrapper">
-            <label>Last Name</label>
-            {{form.last_name}}
+            <label for="">Email</label>
+            <input type="email" class="form-control" name="email">
         </div>
         <div class="form-wrapper">
-            <label>Email</label>
-            {{form.email}}
+            <label for="">NumberPhone</label>
+            <input type="text" class="form-control" name="phone">
         </div>
         <div class="form-wrapper">
-            <label>Password</label>
-            {{form.password1}}
+            <label for="">Address</label>
+            <input type="text" class="form-control" name="address">
         </div>
         <div class="form-wrapper">
-            <label>Confirm Password</label>
-            {{form.password2}}
+            <label for="">Password</label>
+            <input type="password" class="form-control" name="password" id="pw">
+        </div>
+        <div class="form-wrapper">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" name="password2">
         </div>
         <button type="submit" class="signup">Register Now</button>
     </form>

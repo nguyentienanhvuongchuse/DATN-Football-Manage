@@ -14,7 +14,7 @@ $(document).ready(function(){
             },
             password2:{
                 required: true,
-                equalTo: "#id_password1"
+                equalTo: "#pw"
             }
         },
         messages: {

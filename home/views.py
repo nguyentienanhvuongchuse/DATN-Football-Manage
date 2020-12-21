@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.forms import inlineformset_factory
+from django.contrib.auth.models import User
 from .form import CreateUserForm, BookingYardForm
 from yard.models import *
 from .filters import LocationFilter, BookingFilter
@@ -79,14 +80,44 @@ def logout_user(request):
 
 def signup(request):
     if request.method == "POST":
-        form = CreateUserForm (request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password1")
-            user = authenticate(username = username, password = password)
-            login(request, user)
-            return redirect("home")
-    form = CreateUserForm()
-    context = {"form":form}
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        username = request.POST["username"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        address = request.POST["address"]
+        password = request.POST["password"]
+
+        usr = User.objects.create_user(username,email,password)
+        usr.first_name = fname
+        usr.last_name = lname
+        usr.save()
+        register = DetailUser(user=usr, phone=phone, address=address)
+        register.save()
+        login(request, usr)
+        return redirect('home')
+    context = {}
     return render(request, "base/signup.html", context)
+
+def information(request):
+    current_user = request.user.id
+    user = User.objects.get(id = current_user)
+    detail = DetailUser.objects.get(user_id=current_user)
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        address = request.POST["address"]
+
+        user.first_name = fname
+        user.last_name = lname
+        user.email = email
+        user.save()
+
+        detail.phone = phone
+        detail.address = address
+        detail.save()
+        print(request.POST)
+    context = {"user":user, "detail":detail}
+    return render(request, "base/user.html",context)
