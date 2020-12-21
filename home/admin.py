@@ -10,3 +10,5 @@ class DisplayBooking(admin.ModelAdmin):
 admin.site.register(Booking,DisplayBooking)
 
 admin.site.register(BookingView)
+
+admin.site.register(LocationView)

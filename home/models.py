@@ -41,3 +41,20 @@ class BookingView(models.Model):
     class Meta:
         db_table = "v_booking"
         managed = False
+
+class LocationView(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    yard = models.ForeignKey(Yard, on_delete=models.DO_NOTHING)
+    time = models.ForeignKey(Time, on_delete=models.DO_NOTHING)
+    phone = models.CharField(max_length=15)
+    address = models.CharField(max_length=255)
+    description = models.TextField()
+    code =models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+    time = models.CharField(max_length=255)
+    cost = models.CharField(max_length=255)
+    class Meta:
+        db_table = "v_location"
+        managed = False

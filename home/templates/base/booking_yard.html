@@ -3,13 +3,7 @@
 {% block content%}
     <div class="col-lg-9 content">
         <form method="POST" class="form-group">
-            <h5>{{time.yard.location.name}}| {{time.yard.code}}</h5>
-            Thoi gian: {{time.time}}
-            <br>
-            Gia san: {{time.cost}}
-            {% csrf_token %}
-            {{form}}
-            <input type="submit" value="Dat san" class="btn btn-success">
+
         </form>
     </div>
 {% endblock content%}
