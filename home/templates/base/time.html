@@ -2,30 +2,48 @@
 {% block title%} Detail {% endblock title%}
 {% block content%}
     <div class="col-lg-9 content">
-        <table class="table">
-
-            <h3>
-            <a href="{% url "detail" yard.location.id%}">{{yard.location.name}}</a>
-            | {{yard.code}}</h3>
-
+        <form method="GET" id="searchForm">
+            {{myFilter.form.date}}
+            <select name="type" id="id_type">
+                {% for yard in yard%}
+                    <option value="{{yard.type}}">{{yard.type}} nguoi</option>
+                {% endfor%}
+            </select>
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary">
+        </form>
+        <table class="table border-bodered table-manager">
             <thead>
-                <tr>
-                <th scope="col">Thoi gian</th>
-                <th scope="col">Gia (vnd)</th>
-                <th scope="col">Trang thai</th>
-                <th scope="col">Dat san</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for time in time %}
-                <tr class="list-ul">
-                    <td>{{time.time}}</td>
-                    <td>{{time.cost}}</td>
-                    <td>OPEN</td>
-                    <td><a href="{% url "booking_yard" time.id%}" class="btn btn-success">Booking</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
+            <tr>
+                <th scope="col"> Ngay </th>
+                <th scope="col"> Gio </th>
+                <th scope="col"> Gia</th>
+                <th scope="col"> Ten san </th>
+                <th scope="col"> Dat san </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for time in time%}
+            <tr>
+                <td> {{time.date|date:"d-m-Y"}} </td>
+                <td> {{time.time}} </td>
+                <td> {{time.cost}} </td>
+                <td> {{time.yard}} </td>
+                <td> {% include "base/booking.html"%} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
         </table>
     </div>
 {% endblock content%}
+
+{% block script%}
+    <script>
+        let id_date = document.getElementById('id_date');
+        id_date.setAttribute('type', 'date');
+        var day = new Date();
+        var d = day.getDate();
+        var m = day.getMonth()+1;
+        var y = day.getFullYear();
+        id_date.defaultValue = `${y}-${m}-${d}`
+    </script>
+{% endblock %}

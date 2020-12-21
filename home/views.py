@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.forms import inlineformset_factory
 from .form import CreateUserForm, BookingYardForm
 from yard.models import *
-from .filters import LocationFilter
+from .filters import LocationFilter, BookingFilter
 from .models import *
 # Create your views here.
 
@@ -19,20 +19,29 @@ def home(request):
 
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
-    yard = Yard.objects.filter(location=pk)
-    context = {"detail":detail, "yard":yard}
+    context = {"detail":detail}
     return render(request, "base/detail.html", context)
 
 def time_booking(request,pk):
-    time = Time.objects.filter(yard=pk)
-    yard = Yard.objects.get(id=pk)
-    context = {"time":time, "yard":yard}
+    current_user = request.user.id
+    time = BookingView.objects.filter(location=pk, status="M")
+    yard = Yard.objects.filter(location=pk)
+    myFilter = BookingFilter(request.GET, queryset=time)
+    time = myFilter.qs
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        data = Booking.objects.get(id=booking_id)
+        data.user_id = current_user
+        data.status = request.POST["handle"]
+        data.save()
+    context = {"time":time, "myFilter":myFilter,"yard":yard}
     return render(request, "base/time.html", context)
 
 def booking_yard(request,pk):
     current_user = request.user.id
-    time = Time.objects.get(id=pk)
-    form = BookingYardForm(initial={"time":time,"user":current_user})
+    location = BookingView.objects.filter(booking=pk)
+    booking = Booking.objects.get(id=pk)
+    form = BookingYardForm()
     if request.method == "POST":
         form = BookingYardForm(request.POST)
         if form.is_valid():

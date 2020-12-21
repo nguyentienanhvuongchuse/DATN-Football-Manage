@@ -1,4 +1,6 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{time.id}}">Dat san</a>
+
+<div class="modal fade" id="exampleModal{{time.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
@@ -8,13 +10,17 @@
         </button>
     </div>
     <div class="modal-body">
-        {% for yard in yard %}
-        <a href="{% url "time_booking" yard.id %}" class="btn btn-primary yard-booking">{{ yard.code }}</a>
-        {% endfor %}
-        <br><hr>
-        <div class="show-detail">
-
-        </div>
+            <h5>Ma san: {{time.code}}</h5>
+            <h5>Loai san: {{time.type}}</h5>
+            <h5>Thoi gian: {{time.time}}</h5>
+            <h5>Gia tien: {{time.cost}}</h5>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{time.booking_id}}" name="booking_id">
+                <input type="hidden" value="XL" name="handle">
+                <input type="submit" value="Dat san" class="btn btn-success">
+            </form>
     </div>
     </div>
 </div>
