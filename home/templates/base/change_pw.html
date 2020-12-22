@@ -1,0 +1,19 @@
+{% extends "base/index.html"%}
+{% block title %} Signup {% endblock title%}
+{% block content %}
+<div class="col-lg-9">
+    <form method="POST" id="signup_form">
+        {% csrf_token %}
+        <h3>Change Password</h3>
+        <div class="form-wrapper">
+            <label for="">Password</label>
+            <input type="password" class="form-control" name="password" id="pw">
+        </div>
+        <div class="form-wrapper">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" name="password2">
+        </div>
+        <input type="submit" class="signup" value="Change Password">
+    </form>
+</div>
+{% endblock content %}

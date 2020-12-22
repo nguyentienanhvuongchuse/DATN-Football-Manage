@@ -29,6 +29,12 @@ class DetailUser(models.Model):
     def __str__(self):
         return self.user.username
 
+class Comment(models.Model):
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
 class BookingView(models.Model):
     id = models.BigIntegerField(primary_key=True)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)

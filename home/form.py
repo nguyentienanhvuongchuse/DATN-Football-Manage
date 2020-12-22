@@ -28,3 +28,21 @@ class BookingYardForm(ModelForm):
     class Meta:
         model = Booking
         fields = ["time","user","date"]
+
+class CommentForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        self.author = kwargs.pop('author', None)
+        self.location = kwargs.pop('location', None)
+        super().__init__(*args, **kwargs)
+        self.fields["body"].widget.attrs.update({"class" : "form-control"})
+
+    def save(self, commit=True):
+        comment = super().save(commit=False)
+        comment.author = self.author
+        comment.location = self.location
+        comment.save()
+
+    class Meta:
+        model = Comment
+        fields = ["body"]

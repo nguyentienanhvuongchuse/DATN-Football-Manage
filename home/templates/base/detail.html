@@ -21,63 +21,10 @@
         {{detail.description|safe}}
     </p>
     </div>
-    <div class="col-xl-12 container-comment">
-    <h3>Comment</h3>
-    <section class="post-footer">
-        <form>
-        <div class="form-group">
-            <input type="text" class="form-control comment-input" id="comment">
-            <input type="submit" name="submit-comment" class="submit-comment">
-        </div>
-        </form>
-        <hr>
-        <div class="post-footer-comment-wrapper">
-            <div class="comment-form">
 
-            </div>
-            <div class="comment">
-            <div class="media">
-                <div class="media-left">
-                <a href="#">
-                    <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
-                </a>
-                </div>
-                <div class="media-body">
-                    <a href="#" class="anchor-username"><h4 class="media-heading">Media heading</h4></a>
-                    <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Totam necessitatibus, natus dicta exercitationem quo corrupti
-                        nostrum, velit illum excepturi quis doloribus! Hic repellendus
-                        facere provident consequuntur nostrum a sunt accusantium!
-                        <a class="reply" id="reply"> Trả lời </a>
-                        <div class="comment-child">
-                        <div class="head">
-                            <form class="form-comment">
-                            <div class="form-group col-xl-11 form-comment-child">
-                                <input type="text" class="form-control comment-input-child" id="comment" name="comment-input-child">
-                                <input type="submit" name="submit-comment-child" class="submit-comment-child">
-                            </div>
-                            </form>
-                            <img src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="Not img">
-                            <a href=""><h5> Name</h5></a>
-                        </div>
-                        <div class="body">
-                            <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-                            explicabo? Adipisci, error ex repellendus sint eos nam quis
-                            blanditiis quisquam omnis eligendi cumque itaque unde quia,
-                            dolores totam magni perspiciatis?
-                            </p>
-                        </div>
-                        </div>
-                    </p>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-
+    <h3>Bình luận</h3>
+    <hr>
 </div>
+{% include "base/comment.html" %}
 </div>
 {% endblock content%}

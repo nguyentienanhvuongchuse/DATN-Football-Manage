@@ -10,6 +10,7 @@ urlpatterns = [
     path("booking/<str:pk>/", views.booking_yard, name="booking_yard"),
 
     path("information/", views.information, name = "user"),
+    path("changepw/", views.change_pw, name = "change_pw"),
     path("login/", views.signin, name = "login"),
     path("signup/", views.signup, name = "signup"),
     path("logout/", views.logout_user, name = "logout")
