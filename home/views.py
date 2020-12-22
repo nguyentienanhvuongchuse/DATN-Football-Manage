@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.forms import inlineformset_factory
 from django.contrib.auth.models import User
-from .form import CreateUserForm, BookingYardForm
+from django.contrib.auth import update_session_auth_hash
+from .form import CreateUserForm, BookingYardForm, CommentForm
 from yard.models import *
 from .filters import LocationFilter, BookingFilter
 from .models import *
@@ -20,7 +21,13 @@ def home(request):
 
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
-    context = {"detail":detail}
+    form = CommentForm()
+    if request.method == "POST":
+        form = CommentForm(request.POST, author=request.user, location=detail)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path)
+    context = {"detail":detail, "form":form}
     return render(request, "base/detail.html", context)
 
 def time_booking(request,pk):
@@ -121,3 +128,18 @@ def information(request):
         print(request.POST)
     context = {"user":user, "detail":detail}
     return render(request, "base/user.html",context)
+
+def change_pw(request):
+    current_user = request.user.id
+    user = User.objects.get(id = current_user)
+    if request.method == "POST":
+        password = request.POST["password"]
+        print(password)
+        print(user.password)
+        user.set_password = password
+        print(user.password)
+        user.save()
+        print(user.password)
+        update_session_auth_hash(request, user)
+    context = {"user":user}
+    return render(request, "base/change_pw.html",context)
