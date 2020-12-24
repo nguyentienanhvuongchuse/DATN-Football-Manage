@@ -9,7 +9,7 @@ urlpatterns = [
     path("detail/<str:pk>/", views.detail, name = "detail"),
     path("time/<str:pk>/",views.time_booking, name = "time_booking"),
     path("booking/<str:pk>/", views.booking_yard, name="booking_yard"),
-
+    path('email_send',views.sendEmai,name="send_mail"),
     path("information/", views.information, name = "user"),
     path("changepw/", views.change_pw, name = "change_pw"),
     path("login/", views.signin, name = "login"),

@@ -144,7 +144,7 @@ def update_timecost(request,pk):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['manage'])
-def update_timecost(request,pk):
+def delete_timecost(request,pk):
     time = Time.objects.get(id=pk)
     yard = time.yard_id
     if request.method == "POST":

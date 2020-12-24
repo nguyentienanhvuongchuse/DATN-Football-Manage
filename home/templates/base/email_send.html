@@ -1,0 +1,40 @@
+{% extends 'base/index.html' %}
+{%block content%}
+<style type="text/css">
+	html, body{
+		height: 100%;
+	}
+
+	#page-wrapper{
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: #eaeaea;
+	}
+
+	#success-box{
+		max-width: 900px;
+		height: auto;
+		background-color: #fff;
+		border:1px solid #888;
+		border-radius: 5px;
+		padding: 15px;
+	}
+
+	#success-box p{
+		font-size: 18px;
+	}
+
+</style>
+<div class="col-lg-9 content">
+    <div id="page-wrapper">
+        <div id="success-box" class="content-block">
+            <h1>Cảm ơn bạn đã gửi phản hồi!</h1>
+            <p>Bạn đã gửi phản hồi thành công, chân thành cảm ơn bạn !</p>
+            <a id="back-btn" class="btn btn-info" href="{% url 'home' %}">TRANG CHỦ</a>
+        </div>
+    </div>
+</div>
+{%endblock content%}

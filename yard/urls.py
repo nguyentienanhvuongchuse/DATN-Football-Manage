@@ -13,6 +13,6 @@ urlpatterns = [
     path("delete_yard/<pk>/", views.delete_yard, name="delete_yard"),
     path("time/<pk>/", views.time_cost, name="create_time"),
     path("updatetime/<pk>/", views.update_timecost, name="update_time"),
-    path("deletetime/<pk>/", views.update_timecost, name="delete_time"),
+    path("deletetime/<pk>/", views.delete_timecost, name="delete_time"),
     path("statistical", views.statistical, name="statistical")
 ]
