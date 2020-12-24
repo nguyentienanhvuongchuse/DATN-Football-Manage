@@ -5,10 +5,10 @@
 
     <div class="row status">
         <div class="col-lg-6 status-yard">
-            <a href="{% url "cart"%}"><b><u>Dang xu ly</u></b></a>
+            <a href="{% url "cart"%}">Dang xu ly</a>
         </div>
         <div class="col-lg-6 status-yard">
-            <a href="{% url "history"%}">Lich su</a>
+            <a href="{% url "history"%}"><b><u>Lich su</u></b></a>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
       <th scope="col">Yard</th>
       <th scope="col">Time</th>
       <th scope="col">Cost</th>
-      <th scope="col">Option</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -30,13 +30,12 @@
       <td>{{cart.time}}</td>
       <td>{{cart.cost}}</td>
       <td>
-        {% include "base/handle_booking.html" %}
+        {{cart.status}}
       </td>
     </tr>
     {% endfor %}
-
   </tbody>
 </table>
-    <p> Tong tien: {{total}}vnd</p><a href="#">Thanh toan</a>
+
 </div>
 {% endblock content %}

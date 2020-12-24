@@ -3,10 +3,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 from django.contrib.auth import update_session_auth_hash
 from .form import CreateUserForm, BookingYardForm, CommentForm
+from .decorators import *
 from yard.models import *
 from .filters import LocationFilter, BookingFilter
 from .models import *
@@ -30,6 +33,7 @@ def detail(request, pk):
     context = {"detail":detail, "form":form}
     return render(request, "base/detail.html", context)
 
+@login_required(login_url="login")
 def time_booking(request,pk):
     current_user = request.user.id
     time = BookingView.objects.filter(location=pk, status="M")
@@ -45,6 +49,7 @@ def time_booking(request,pk):
     context = {"time":time, "myFilter":myFilter,"yard":yard}
     return render(request, "base/time.html", context)
 
+@login_required(login_url="login")
 def booking_yard(request,pk):
     current_user = request.user.id
     location = BookingView.objects.filter(booking=pk)
@@ -61,11 +66,27 @@ def booking_yard(request,pk):
     context = {"time":time, "form":form}
     return render(request,"base/booking_yard.html", context)
 
+@login_required(login_url="login")
 def cart(request):
-    current_user = request.user
-    cart = Booking.objects.filter(user = current_user.id)
-    context = {"cart":cart}
+    current_user = request.user.id
+    cart = CartView.objects.filter(user_booking=current_user, status="XL")
+    total = 0
+    for gt in cart:
+        total += int(gt.cost)
+    if request.method == "POST":
+        booking_id = request.POST["booking_id"]
+        data = Booking.objects.get(id=booking_id)
+        data.status = request.POST["handle"]
+        data.save()
+    context = {"cart":cart, "total":total}
     return render(request, "base/order.html", context)
+
+@login_required(login_url="login")
+def cart_history(request):
+    current_user = request.user.id
+    cart = CartView.objects.filter(user_booking=current_user)
+    context = {"cart":cart}
+    return render(request, "base/cart_history.html", context)
 
 def contact(request):
     return HttpResponse("Contact page")
@@ -81,6 +102,7 @@ def signin(request):
     context = {}
     return render(request, "base/login.html", context)
 
+@login_required(login_url="login")
 def logout_user(request):
     logout(request)
     return redirect("home")
@@ -106,6 +128,7 @@ def signup(request):
     context = {}
     return render(request, "base/signup.html", context)
 
+@login_required(login_url="login")
 def information(request):
     current_user = request.user.id
     user = User.objects.get(id = current_user)
@@ -129,6 +152,7 @@ def information(request):
     context = {"user":user, "detail":detail}
     return render(request, "base/user.html",context)
 
+@login_required(login_url="login")
 def change_pw(request):
     current_user = request.user.id
     user = User.objects.get(id = current_user)
