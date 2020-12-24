@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 from django.contrib.auth import update_session_auth_hash
 from .form import CreateUserForm, BookingYardForm, CommentForm
 from .decorators import *
@@ -89,7 +92,26 @@ def cart_history(request):
     return render(request, "base/cart_history.html", context)
 
 def contact(request):
-    return HttpResponse("Contact page")
+    context = {}
+    return render(request, "base/contact.html",context)
+
+def sendEmai(request):
+    if request.method == 'POST':
+        template = render_to_string('base/email_template.html',
+        {
+            'name':request.POST['name'],
+            'email':request.POST['email'],
+            'message':request.POST['message'],
+        })
+        email = EmailMessage(
+            request.POST['subject'],
+            template,
+            settings.EMAIL_HOST_USER,
+            ['sp.mysite2020@gmail.com'],
+        )
+        email.fail_silently = False
+        email.send()
+    return render(request,'base/email_send.html')
 
 def signin(request):
     if request.method == "POST":

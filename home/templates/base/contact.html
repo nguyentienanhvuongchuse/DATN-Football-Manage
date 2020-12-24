@@ -1,0 +1,26 @@
+{% extends "base/index.html" %}
+{% block title%} Detail {% endblock title%}
+{% block content%}
+<div class="col-lg-9 content">
+    <form method="POST" action="{% url "send_mail" %}">
+        {% csrf_token %}
+        <div>
+            <label>Ho ten</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div>
+            <label>Tieu de</label>
+            <input type="text" class="form-control" name="subject" >
+        </div>
+        <div>
+            <label>Noi dung</label>
+            <textarea name="message" id="" cols="30" rows="10" class="form-control"> </textarea>
+        </div>
+        <input type="submit" class="btn btn-success" value="Phan hoi">
+    </form>
+</div>
+{% endblock content%}
