@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
+from django.contrib.auth.decorators import login_required
+from home.decorators import *
 from .forms import *
 from home.models import *
 from .models import *
 # Create your views here.
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def booking(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
@@ -18,6 +22,8 @@ def booking(request):
     context = {"booking":booking}
     return render(request, "manage/booking.html",context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def booking_open(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
@@ -25,6 +31,8 @@ def booking_open(request):
     context = {"booking":booking}
     return render(request, "manage/booking_open.html",context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def booking_close(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
@@ -32,6 +40,8 @@ def booking_close(request):
     context = {"booking":booking}
     return render(request, "manage/booking_close.html",context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def booking_accept(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
@@ -52,6 +62,8 @@ def manage_location(request):
     context = {"form":form}
     return render(request, "manage/location.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def manage_yard(request):
     current_user = request.user.id
     location_id = Location.objects.get(user=current_user)
@@ -59,6 +71,8 @@ def manage_yard(request):
     context = {"yard":yard}
     return render(request, "manage/yard.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def update_yard(request,pk):
     yard = Yard.objects.get(id=pk)
     if request.method == "POST":
@@ -71,6 +85,8 @@ def update_yard(request,pk):
     context = {"form":form, "yard":yard}
     return render(request, "manage/form_yard.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def delete_yard(request,pk):
     yard = Yard.objects.get(id=pk)
     if request.method == "POST":
@@ -79,6 +95,8 @@ def delete_yard(request,pk):
     context = {"yard":yard}
     return render(request, "manage/delete_yard.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def create_yard(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
@@ -93,6 +111,8 @@ def create_yard(request):
     context = {"form":form}
     return render(request, "manage/create_yard.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def time_cost(request,pk):
     TimeFormSet = inlineformset_factory(Yard, Time,fields=("time","cost"),extra=5)
     yard = Yard.objects.get(id=pk)
@@ -108,6 +128,8 @@ def time_cost(request,pk):
     context = {"time":time, "form":formset}
     return render(request, "manage/time.html",context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def update_timecost(request,pk):
     time = Time.objects.get(id=pk)
     yard = time.yard_id
@@ -120,6 +142,8 @@ def update_timecost(request,pk):
     context = {"form":form, "time":time}
     return render(request, "manage/update_time.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def update_timecost(request,pk):
     time = Time.objects.get(id=pk)
     yard = time.yard_id
@@ -129,5 +153,7 @@ def update_timecost(request,pk):
     context = {"time":time}
     return render(request, "manage/delete_time.html", context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def statistical(request):
     return HttpResponse("Statistical")
