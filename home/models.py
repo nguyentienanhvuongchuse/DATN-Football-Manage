@@ -94,3 +94,23 @@ class CartView(models.Model):
     class Meta:
         db_table = "booking_view"
         managed = False
+
+class ViewChart(models.Model):
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+    time = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    status = models.CharField(max_length=255)
+    total = models.IntegerField()
+
+    class Meta:
+        db_table = "v_chart"
+        managed = False
+
+class ViewRevenue(models.Model):
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    revenue = models.IntegerField()
+
+    class Meta:
+        db_table = "v_revenue"
+        managed = False
