@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from home.decorators import *
@@ -156,4 +156,20 @@ def delete_timecost(request,pk):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['manage'])
 def statistical(request):
-    return HttpResponse("Statistical")
+    current_user = request.user
+    location = Location.objects.get(user=current_user)
+    revenue = ViewRevenue.objects.get(location=location)
+    context = {"revenue":revenue}
+    return render(request, "manage/statistic.html", context)
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
+def resultData(request):
+    timedata = []
+    current_user = request.user
+    location = Location.objects.get(user=current_user)
+    total = ViewChart.objects.filter(location=location)
+    for i in total:
+        timedata.append({i.time:i.total})
+    print(timedata)
+    return JsonResponse(timedata, safe=False)

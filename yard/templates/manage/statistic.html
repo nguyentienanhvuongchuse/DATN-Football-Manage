@@ -1,0 +1,60 @@
+{% extends "base/index.html" %}
+{% block title %} Statistic {% endblock %}
+
+{% block content%}
+    <div class="col-lg-9 content">
+        <h2><b>Bieu do</b></h2>
+        <div id="myChart">
+
+        </div>
+        <p>Thong ke so gio dat san</p>
+        <h2><b>Thong ke</b></h2>
+        <p>Tong doanh thu: {{revenue.revenue}}</p>
+    </div>
+{% endblock %}
+{% block script%}
+<script>
+
+    var state ={
+		'items':[],
+		'values':[],
+	}
+
+    var dataURL = `/manage/total`
+    $.ajax({
+        method:`GET`,
+        url:dataURL,
+        success:function(response){
+            console.log(`RESPONSE:`, response)
+            for (var i in response){
+
+				var key = Object.keys(response[i])[0]
+				var value = Object.values(response[i])[0]
+
+				state.items.push(key)
+				state.values.push(value)
+			}
+            console.log('STAGE', state)
+            buildChart()
+        }
+    })
+
+    function buildChart(){
+        var charData = {
+        "type":"bar",
+        "scale-x":{
+            "values":state.items
+        },
+        "series":[
+            {
+                "values":state.values
+            }
+        ]
+    }
+    zingchart.render({
+        id: "myChart",
+        data: charData,
+    });
+    }
+</script>
+{% endblock %}
