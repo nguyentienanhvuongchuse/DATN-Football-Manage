@@ -114,3 +114,30 @@ class ViewRevenue(models.Model):
     class Meta:
         db_table = "v_revenue"
         managed = False
+
+class ViewBooking(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+    user_location = models.IntegerField()
+    yard = models.ForeignKey(Yard, on_delete=models.DO_NOTHING)
+    time = models.ForeignKey(Time, on_delete=models.DO_NOTHING)
+    booking =models.ForeignKey(Booking, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=255)
+    phone_location = models.CharField(max_length=15)
+    address_location = models.CharField(max_length=255)
+    description = models.TextField()
+    code =models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+    time = models.CharField(max_length=255)
+    cost = models.CharField(max_length=255)
+    status = models.CharField(max_length=255)
+    date = models.DateField()
+    first_name =models.CharField(max_length=255)
+    last_name =models.CharField(max_length=255)
+    email =models.CharField(max_length=255)
+    phone =models.CharField(max_length=255)
+    address =models.CharField(max_length=255)
+    class Meta:
+        db_table = "v_detail"
+        managed = False

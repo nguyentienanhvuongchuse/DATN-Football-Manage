@@ -11,7 +11,8 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib.auth import update_session_auth_hash
-from .form import CreateUserForm, BookingYardForm, CommentForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .form import CreateUserForm, CommentForm
 from .decorators import *
 from yard.models import *
 from .filters import LocationFilter, BookingFilter
@@ -22,6 +23,16 @@ def home(request):
     location = Location.objects.all()
     myFilter = LocationFilter(request.GET, queryset=location)
     location = myFilter.qs
+
+    page = request.GET.get('page')
+    paginator = Paginator(location,6)
+    try:
+        location = paginator.page(page)
+    except PageNotAnInteger:
+        location = paginator.page(1)
+    except EmptyPage:
+        location = paginator.page(paginator.num_pages)
+
     context = {"location": location, "myFilter":myFilter}
     return render(request, "base/home.html", context)
 

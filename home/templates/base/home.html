@@ -76,5 +76,46 @@
         </div>
         {% endfor%}
     </div>
+    <div class="row">
+			{%if location.has_other_pages%}
+				<ul class=pagination>
+					{%if location.has_previous%}
+						<li class="page-item"><a data-page ="{{location.previous_page_number}}"
+						class="page-link" href="?page={{location.previous_page_number}}">&laquo</a></li>
+
+						<li class="page-item"><a data-page="1" class="page-link" href="?page=1">
+						Trang đầu</a></li>
+			{%endif%}
+					{%for i in location.paginator.page_range%}
+						{%if location.number == i%}
+							<li class="page-item"><a  class="active page-link">{{i}}</a></li>
+						{%else%}
+							<li class="page-item"><a data-page="{{i}}" class="page-link" href="?page={{i}}">{{i}}</a></li>
+						{%endif%}
+					{%endfor%}
+					{%if location.has_next %}
+						<li class="page-item"><a data-page="{{location.paginator.num_pages}}" class="page-link" href="?page={{location.paginator.num_pages}}">Trang cuối</a></li>
+
+						<li class="page-item"><a data-page="{{location.next_page_number}}" class="page-link" href="?page={{location.next_page_number}}">&raquo</a></li>
+					{%endif%}
+				</ul>
+			{%endif%}
+		</div>
 </div>
+<script type="text/javascript">
+	let searchForm = document.getElementById('searchForm')
+	let pageLinks = document.getElementsByClassName('page-link')
+
+	for(var i=0; pageLinks.length > i; i++){
+
+		pageLinks[i].addEventListener('click', function(e){
+			e.preventDefault()
+			let page = this.dataset.page
+			console.log('Page:', page)
+			searchForm.innerHTML += `<input value="${page}" name="page" hidden >`
+			searchForm.submit()
+		})
+
+	}
+</script>
 {% endblock content %}
