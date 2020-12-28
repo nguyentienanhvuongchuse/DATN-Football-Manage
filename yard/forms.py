@@ -49,3 +49,15 @@ class HandleBooking(ModelForm):
     class Meta:
         models = Booking
         field = "status"
+
+class BookingYardForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+    def save(self, commit=True):
+        comment = super().save(commit=False)
+        comment.user = self.user
+        comment.save()
+    class Meta:
+        model = Booking
+        fields = ["time","date"]

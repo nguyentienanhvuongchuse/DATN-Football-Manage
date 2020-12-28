@@ -14,28 +14,6 @@
         <p>Email: {{booking.email}}</p>
         <p>SDT: {{booking.phone}}</p>
         <p>Dia chi: {{booking.address}}</p>
-        <div class="row">
-
-            <div class="col-xl-6">
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" value="{{booking.booking_id}}" name="booking_id">
-                    <input type="hidden" value="XN" name="handle">
-                    <input type="submit" value="Accept" class="btn btn-success">
-                </form>
-            </div>
-
-            <div class="col-xl-6">
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" value="{{booking.booking_id}}" name="booking_id">
-                    <input type="hidden" value="TC" name="handle">
-                    <input type="submit" value="Close" class="btn btn-danger">
-                </form>
-            </div>
-        </div>
-
-
     </div>
     </div>
 </div>

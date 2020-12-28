@@ -24,11 +24,6 @@ class CreateUserForm(UserCreationForm):
         self.fields["password1"].widget.attrs.update({"class" : "form-control"})
         self.fields["password2"].widget.attrs.update({"class" : "form-control"})
 
-class BookingYardForm(ModelForm):
-    class Meta:
-        model = Booking
-        fields = ["time","user","date"]
-
 class CommentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import date,datetime
 from home.decorators import *
 from .forms import *
 from home.models import *
@@ -13,7 +15,7 @@ from .models import *
 def booking(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
-    booking = BookingView.objects.filter(location=location, status="XL")
+    booking = ViewBooking.objects.filter(location=location, status="XL")
     if request.method == "POST":
         booking_id = request.POST["booking_id"]
         data = Booking.objects.get(id=booking_id)
@@ -28,7 +30,13 @@ def booking_open(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
     booking = BookingView.objects.filter(location=location, status="M")
-    context = {"booking":booking}
+    form = BookingYardForm()
+    if request.method == "POST":
+        form = BookingYardForm(request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("location_open")
+    context = {"booking":booking, "form":form}
     return render(request, "manage/booking_open.html",context)
 
 @login_required(login_url='login')
@@ -45,13 +53,20 @@ def booking_close(request):
 def booking_accept(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
-    booking = BookingView.objects.filter(location=location, status="XN")
+    booking = ViewBooking.objects.filter(location=location, status="XN")
     context = {"booking":booking}
     return render(request, "manage/booking_accept.html",context)
 
 def manage_location(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)
+    today = date.today()
+    handle = BookingView.objects.filter(location=location)
+    for i in handle:
+        if i.date < today and i.status == "XL" and i.status == "M":
+            booking = Booking.objects.get(id=i.booking_id)
+            booking.status = "TC"
+            booking.save()
 
     form = LocationForm(instance=location)
     if request.method == "POST":

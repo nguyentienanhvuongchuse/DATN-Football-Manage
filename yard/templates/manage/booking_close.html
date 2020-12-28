@@ -14,13 +14,12 @@
                 <a href="{% url "location_open"%}">San trong</a>
             </div>
             <div class="col-lg-3 status-yard">
-                <a href="{% url "location_close"%}"><b><u>San tu choi</u></b></a>
+                <a href="{% url "location_close"%}"><b><u>San da dong</u></b></a>
             </div>
         </div>
         <table class="table border-bodered table-manager">
             <thead>
             <tr>
-                <th scope="col"> Nguoi thue </th>
                 <th scope="col"> Loai san </th>
                 <th scope="col"> Gio </th>
                 <th scope="col"> Trang thai </th>
@@ -29,7 +28,6 @@
         <tbody>
             {% for booking in booking %}
             <tr>
-                <td> {{booking.user}} </td>
                 <td> {{booking.code}} </td>
                 <td> {{booking.time}} </td>
                 <td> {{booking.status}} </td>

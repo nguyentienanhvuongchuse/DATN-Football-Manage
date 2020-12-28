@@ -14,13 +14,15 @@
                 <a href="{% url "location_open"%}"><b><u>San trong</u></b></a>
             </div>
             <div class="col-lg-3 status-yard">
-                <a href="{% url "location_close"%}">San tu choi</a>
+                <a href="{% url "location_close"%}">San da dong</a>
             </div>
         </div>
+        {% include "manage/add_booking.html" %}
         <table class="table border-bodered table-manager">
             <thead>
             <tr>
                 <th scope="col"> Loai san </th>
+                <th scope="col"> Ngay </th>
                 <th scope="col"> Gio </th>
                 <th scope="col"> Trang thai </th>
                 <th scope="col"> Xu ly </th>
@@ -30,10 +32,11 @@
             {% for booking in booking %}
             <tr>
                 <td> {{booking.code}} </td>
+                <td> {{booking.date|date:"d-m-Y"}} </td>
                 <td> {{booking.time}} </td>
                 <td> {{booking.status}} </td>
                 <td>
-                    <a href="#" class="btn btn-danger">Xu ly</a>
+                    {% include "manage/handle.html" %}
                 </td>
             </tr>
             {% endfor %}
