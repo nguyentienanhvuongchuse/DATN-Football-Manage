@@ -1,0 +1,30 @@
+{% extends "base/index.html" %}
+{% block title%} Cam Le {% endblock title%}
+{% load static %}
+{% block content%}
+<div class="col-lg-9 content" id="my-data">
+    <div class="row">
+        {% for location in location%}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="#"
+                    ><img class="card-img-top" src="{% static "images/anh03.jpg" %}" alt="" /></a
+                >
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url "detail" location.id %}">{{ location.name }}</a>
+                    </h4>
+                    <h5>{{ location.phone }}</h5>
+                    <p class="card-text">{{ location.address }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"
+                        >&#9733; &#9733; &#9733; &#9733; &#9734;</small
+                    >
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+{% endblock content%}
