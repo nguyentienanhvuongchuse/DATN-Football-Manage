@@ -1,0 +1,32 @@
+<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#example{{cart.id}}">Thanh toan</a>
+
+<div class="modal fade" id="example{{cart.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thanh toan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="pay">
+                <input type="radio" name="payment" value="momo">
+                <a href="#" class="payment"><img src="https://play-lh.googleusercontent.com/dQbjuW6Jrwzavx7UCwvGzA_sleZe3-Km1KISpMLGVf1Be5N6hN6-tdKxE5RDQvOiGRg" alt="">Thanh toán bằng Momo</a>
+            </div>
+            <div class="pay">
+            <input type="radio" name="payment" value="zalo">
+            <a href="#" class="payment"><img src="https://1.bp.blogspot.com/-gd31Y8LLTXc/XY0WhpfUF9I/AAAAAAADDzo/44-B6-qh8o0yyMwo-J2cHKyWz2SbfJGKACLcBGAsYHQ/s1600/logo.png" alt="">Thanh toán bằng Zalopay</a>
+            </div>
+            <div class="pay">
+                <input type="radio" name="payment" value="vnpay">
+                <a href="#" class="payment"><img src="https://cdn.itviec.com/employers/vnpay/logo/social/Geh2eFrtLTL1xk7t7edjUKVS/vnpay-logo.jpg" alt="">Thanh toán bằng Vnpay</a>
+            </div>
+            <input type="submit" value="Thanh toan" class="btn btn-success">
+        </form>
+    </div>
+    </div>
+</div>
+</div>

@@ -1,5 +1,7 @@
+import json
+from django.core import serializers
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
@@ -35,6 +37,11 @@ def home(request):
 
     context = {"location": location, "myFilter":myFilter}
     return render(request, "base/home.html", context)
+
+def follow_location(request,obj):
+
+    context = {}
+    return render(request, "base/fl_location.html",context)
 
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
@@ -200,3 +207,40 @@ def change_pw(request):
         update_session_auth_hash(request, user)
     context = {"user":user}
     return render(request, "base/change_pw.html",context)
+
+#Location
+
+def thanhkhe(request):
+    location = Location.objects.filter(district="TK")
+    context = {"location":location}
+    return render(request, "district/thanhkhe.html",context)
+
+def sontra(request):
+    location = Location.objects.filter(district="ST")
+    context = {"location":location}
+    return render(request, "district/sontra.html",context)
+
+def nhs(request):
+    location = Location.objects.filter(district="NHS")
+    context = {"location":location}
+    return render(request, "district/nhs.html",context)
+
+def lienchieu(request):
+    location = Location.objects.filter(district="LC")
+    context = {"location":location}
+    return render(request, "district/lienchieu.html",context)
+
+def haichau(request):
+    location = Location.objects.filter(district="HC")
+    context = {"location":location}
+    return render(request, "district/haichau.html",context)
+
+def camle(request):
+    location = Location.objects.filter(district="CL")
+    context = {"location":location}
+    return render(request, "district/camle.html",context)
+
+def hoavang(request):
+    location = Location.objects.filter(district="ST")
+    context = {"location":location}
+    return render(request, "district/hoavang.html",context)
