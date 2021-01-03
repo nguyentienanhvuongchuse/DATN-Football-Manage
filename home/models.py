@@ -34,6 +34,7 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    reply = models.ForeignKey("Comment", null=True, related_name="replies", on_delete=models.CASCADE)
 
 class BookingView(models.Model):
     id = models.BigIntegerField(primary_key=True)

@@ -1,14 +1,36 @@
-{% for comment in detail.comments.all %}
-    <h5><strong>{{comment.author}}</strong></h5>
-    <p>{{comment.date}}</p>
-    <p>{{comment.body|linebreaks}}</p>
-{% endfor %}
-{% if user.username %}
-    <form action="{% url 'detail' detail.id %}" method="POST">
-        {% csrf_token %}
-        <p><label>Bình luận:</label></p>
-        {{form.body}}
-        <br/>
-        <input type="submit" value="Bình luận"/>
-    </form>
-{% endif %}
+<div class="comment-section">
+    <div class="form">
+        {% if user.username %}
+            <form action="{% url 'detail' detail.id %}" method="POST">
+                {% csrf_token %}
+                <p><label>Bình luận:</label></p>
+                {{form.body}}
+                <br/>
+                <input type="submit" value="Bình luận"/>
+            </form>
+        {% endif %}
+    </div>
+    <div class="content-comment">
+        {% for comment in comment %}
+        <h5><strong>{{comment.author}}</strong></h5>
+        <p>{{comment.date}}</p>
+        <p>{{comment.body|linebreaks}}</p>
+        <button type="button" name="reply-btn" class="reply-btn">Reply</button>
+        <div class="reply">
+            <form action="{% url 'detail' detail.id %}" method="POST">
+                {% csrf_token %}
+                <p><label>Reply:</label></p>
+                {{form.body}}
+                <input type="hidden" name="comment_id" value="{{comment.id}}">
+                <br/>
+                <input type="submit" value="Reply"/>
+            </form>
+            {% for reply in comment.replies.all %}
+                <h5><strong>{{reply.author}}</strong></h5>
+                <p>{{reply.date}}</p>
+                <p>{{reply.body|linebreaks}}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>

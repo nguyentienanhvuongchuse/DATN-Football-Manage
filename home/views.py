@@ -45,13 +45,20 @@ def follow_location(request,obj):
 
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
+    comment = Comment.objects.filter(location=pk)
     form = CommentForm()
     if request.method == "POST":
-        form = CommentForm(request.POST, author=request.user, location=detail)
+        form = CommentForm(request.POST or None)
         if form.is_valid():
-            form.save()
+            content = request.POST.get("body")
+            reply_id = request.POST.get("comment_id")
+            comment_qs = None
+            if reply_id:
+                comment_qs = Comment.objects.get(id=reply_id)
+            comment = Comment.objects.create(author_id=request.user.id, location_id=pk, body=content, reply=comment_qs)
+            comment.save()
             return HttpResponseRedirect(request.path)
-    context = {"detail":detail, "form":form}
+    context = {"detail":detail,"comment":comment, "form":form}
     return render(request, "base/detail.html", context)
 
 @login_required(login_url="login")
