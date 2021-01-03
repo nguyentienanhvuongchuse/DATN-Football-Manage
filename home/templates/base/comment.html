@@ -34,3 +34,20 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+    var replyBtn = Array.from(document.getElementsByClassName("reply-btn"));
+    var reply = Array.from(document.getElementsByClassName("reply"));
+    var temp = 0;
+
+    replyBtn.forEach(function(item, index) {
+        item.addEventListener("click", function(e) {
+            if(temp % 2 == 0) {
+                reply[index].style.display = "block";
+            }else {
+                reply[index].style.display = "none";
+            }
+            temp++;
+        })
+    })
+</script>

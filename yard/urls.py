@@ -15,5 +15,6 @@ urlpatterns = [
     path("updatetime/<pk>/", views.update_timecost, name="update_time"),
     path("deletetime/<pk>/", views.delete_timecost, name="delete_time"),
     path("statistical", views.statistical, name="statistical"),
-    path("total", views.resultData, name="total")
+    path("total", views.resultData, name="total"),
+    path("timedata/<str:pk>/", views.timeAjax, name="timeajax"),
 ]

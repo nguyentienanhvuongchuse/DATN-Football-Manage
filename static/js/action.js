@@ -33,15 +33,3 @@ $(document).ready(function(){
         }
     });
 });
-
-var countClick = 0;
-$(document).ready(function() {
-$('.reply-btn').click(function() {
-    countClick++;
-    if(countClick % 2 === 1) {
-    $('.reply').show()
-    }else {
-    $('.reply').hide()
-    }
-})
-})
