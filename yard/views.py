@@ -4,10 +4,12 @@ from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import date,datetime
+from django.core import serializers
 from home.decorators import *
 from .forms import *
 from home.models import *
 from .models import *
+import json
 # Create your views here.
 
 @login_required(login_url='login')
@@ -27,17 +29,22 @@ def booking(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['manage'])
 def booking_open(request):
-    current_user = request.user.id
+    current_user = request.user
     location = Location.objects.get(user=current_user)
+    yard = Yard.objects.filter(location=location)
     booking = BookingView.objects.filter(location=location, status="M")
-    form = BookingYardForm()
     if request.method == "POST":
-        form = BookingYardForm(request.POST, user=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect("location_open")
-    context = {"booking":booking, "form":form}
+        time = request.POST["drop"]
+        date = request.POST["date"]
+        book = Booking.objects.create(time_id=time,user=current_user,date=date)
+        book.save()
+    context = {"booking":booking, "yard":yard}
     return render(request, "manage/booking_open.html",context)
+
+def timeAjax(request,pk):
+    time = Time.objects.filter(yard=pk)
+    responseData = serializers.serialize('json',time)
+    return JsonResponse(responseData, safe=False)
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['manage'])
@@ -57,6 +64,8 @@ def booking_accept(request):
     context = {"booking":booking}
     return render(request, "manage/booking_accept.html",context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['manage'])
 def manage_location(request):
     current_user = request.user.id
     location = Location.objects.get(user=current_user)

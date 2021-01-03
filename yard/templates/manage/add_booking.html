@@ -12,7 +12,21 @@
     <div class="modal-body">
         <form method="POST">
             {% csrf_token %}
-            {{form}}
+            <label for="yard">Choose a yard:</label>
+            <select name="yard" id="yard">
+                <option> -- Choosse yard -- </option>
+                {% for yard in yard %}
+                <option value="{{yard.id}}">{{yard.code}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="time">Choose a time:</label>
+            <div name="time" id="time">
+
+            </div>
+
+            <input type="date" name="date">
+
             <input type="submit" value="them moi">
         </form>
     </div>

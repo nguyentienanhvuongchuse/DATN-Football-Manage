@@ -36,11 +36,36 @@
                 <td> {{booking.time}} </td>
                 <td> {{booking.status}} </td>
                 <td>
-                    {% include "manage/handle.html" %}
+                    {% include "manage/handle_open.html" %}
                 </td>
             </tr>
             {% endfor %}
         </tbody>
         </table>
     </div>
+    <script>
+        var obj = document.getElementById("yard");
+        var id;
+        obj.onchange = function(e) {
+            id = e.target.value;
+            var dataURL = `/manage/timedata/${id}`;
+            $.ajax({
+                method: "GET",
+                url: dataURL
+            }).done(function(data) {
+                return handleAddYard(JSON.parse(data));
+            })
+
+            function handleAddYard(data) {
+                console.log(data);
+                let time = document.getElementById("time");
+                let option = "<select name='drop'>";
+                data.forEach(function(item) {
+                    option += `<option value="${item.pk}">${item.fields.time}</option>`;
+                })
+                option+= "</seclect>"
+                time.innerHTML = option;
+            }
+        }
+    </script>
 {% endblock %}
