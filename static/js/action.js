@@ -36,12 +36,12 @@ $(document).ready(function(){
 
 var countClick = 0;
 $(document).ready(function() {
-$('.yard-booking').click(function() {
+$('.reply-btn').click(function() {
     countClick++;
     if(countClick % 2 === 1) {
-    $('.show-detail').show()
+    $('.reply').show()
     }else {
-    $('.show-detail').hide()
+    $('.reply').hide()
     }
 })
 })
