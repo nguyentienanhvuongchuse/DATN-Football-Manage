@@ -45,6 +45,20 @@ class TimeCostForm(ModelForm):
         self.fields["time"].widget.attrs.update({"class" : "form-control"})
         self.fields["cost"].widget.attrs.update({"class" : "form-control"})
 
+class AddTimeForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.yard = kwargs.pop('yard', None)
+        super(AddTimeForm, self).__init__(*args, **kwargs)
+        self.fields["time"].widget.attrs.update({"class" : "form-control"})
+        self.fields["cost"].widget.attrs.update({"class" : "form-control"})
+    def save(self, commit=True):
+        time = super().save(commit=False)
+        time.yard = self.yard
+        time.save()
+    class Meta:
+        model = Time
+        fields = ["time", "cost"]
+
 class HandleBooking(ModelForm):
     class Meta:
         models = Booking

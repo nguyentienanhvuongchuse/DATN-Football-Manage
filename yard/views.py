@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -138,18 +138,16 @@ def create_yard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['manage'])
 def time_cost(request,pk):
-    TimeFormSet = inlineformset_factory(Yard, Time,fields=("time","cost"),extra=5)
     yard = Yard.objects.get(id=pk)
     time = Time.objects.filter(yard=pk)
 
-    formset = TimeFormSet(queryset=Time.objects.none(), instance=yard)
+    form = AddTimeForm()
     if request.method == "POST":
-        form = TimeCostForm(request.POST)
-        formset = TimeFormSet(request.POST, instance=yard)
-        if formset.is_valid():
-            formset.save()
-            return redirect("manage_yard")
-    context = {"time":time, "form":formset}
+        form = AddTimeForm(request.POST, yard=yard)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path)
+    context = {"time":time, "form":form}
     return render(request, "manage/time.html",context)
 
 @login_required(login_url='login')

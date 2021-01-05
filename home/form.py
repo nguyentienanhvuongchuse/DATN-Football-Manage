@@ -30,4 +30,4 @@ class CommentForm(forms.ModelForm):
         fields = ["body"]
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)
-        self.fields["body"].widget.attrs.update({"class" : "form-control"})
+        self.fields["body"].widget.attrs.update({"class" : "form-control","placeholder": "Vui lòng nhập nội dung"})

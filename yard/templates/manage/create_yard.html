@@ -6,7 +6,15 @@
         <form method="POST">
             <br>
             {% csrf_token %}
-            {{form}}
+            <div>
+                <label>Mã sân</label>
+                {{form.code}}
+            </div>
+            <div>
+                <label>Loại sân</label>
+                {{form.type}}
+            </div>
+            <br>
             <input type="submit" class="btn btn-primary">
         </form>
     </div>

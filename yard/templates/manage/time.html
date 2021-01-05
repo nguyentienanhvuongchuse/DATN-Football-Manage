@@ -3,6 +3,22 @@
 
 {% block content%}
     <div class="col-lg-9 content">
+        <h2>Thêm mới</h2>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label>Mã sân</label>
+                {{form.time}}
+            </div>
+            <div>
+                <label>Giá tiền</label>
+                {{form.cost}}
+            </div>
+            <br>
+            <input type="submit" name="Thêm mới" class="btn btn-primary" value="Thêm mới">
+        </form>
+        <hr>
         <table class="table border-bodered table-manager">
             <thead>
                 <tr>
@@ -24,17 +40,5 @@
                 {% endfor %}
             </tbody>
         </table>
-        <h2>Thêm mới</h2>
-        <hr>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.management_form }}
-            {% for field in form %}
-                {{field}}
-                <hr>
-            {% endfor %}
-
-            <input type="submit" name="Thêm mới" class="btn btn-primary">
-        </form>
     </div>
 {% endblock %}

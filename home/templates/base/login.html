@@ -2,6 +2,9 @@
 {% block title %} Đăng nhập {% endblock title%}
 {% block content %}
 <div class="col-lg-9">
+    {% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor %}
     <form method="POST" id="signup_form">
         {% csrf_token %}
         <div class="title-form"><h3>Đăng nhập</h3></div>

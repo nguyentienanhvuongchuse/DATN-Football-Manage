@@ -22,6 +22,7 @@ body {
     font-style: italic;
     padding-right: 20px;
 }
+
 .avatar-cmt {
     width: 100px;
     height: 100px;
@@ -380,4 +381,41 @@ form {
     border: 0px solid !important;
 }
 .rate-form button{
+}
+.submit-cmt{
+    float: right;
+    margin-bottom: 15px;
+}
+.element-cmt{
+    margin-top: 20px;
+    padding: 10px;
+}
+.reply-btn{
+    background-color: inherit !important;
+    border: 0px !important;
+    color: #389393;
+    float: right;
+}
+.title-header{
+    text-align: center;
+}
+#searchForm{
+    padding: 10px;
+}
+#id_name{
+    padding: 5px;
+    padding-right: 250px;
+}
+#searchForm label{
+    display: none;
+}
+#messages{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+#success{
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
 }
