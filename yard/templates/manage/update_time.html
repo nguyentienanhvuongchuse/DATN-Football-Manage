@@ -1,13 +1,13 @@
 {% extends "base/index.html" %}
-{% block title %} update time cost {% endblock %}
+{% block title %} Cập nhật thời gian {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
         <form action="" method="POST">
             {% csrf_token %}
             {{form}}
-            <input type="submit" value="Save" class="btn btn-primary">
-            <a href="{% url "create_time" time.yard_id %}" class="btn btn-success">Tro ve</a>
+            <input type="submit" value="Lưu" class="btn btn-primary">
+            <a href="{% url "create_time" time.yard_id %}" class="btn btn-success">Trở về</a>
         </form>
     </div>
 {% endblock %}

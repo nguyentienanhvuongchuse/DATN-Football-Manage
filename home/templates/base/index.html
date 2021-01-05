@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +15,7 @@
         <!-- Bootstrap core CSS -->
         <link href="{% static "vendor/css/bootstrap.min.css"%}" rel="stylesheet"
         />
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Custom styles for this template -->
         <link href="{% static "css/shop-homepage.css" %}" rel="stylesheet" />
         <script src="{% static "vendor/js/jquery.min.js" %}"></script>
@@ -48,6 +48,8 @@
         <script src="{% static "vendor/js/bootstrap.bundle.min.js"%}"></script>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
         <script src="{% static "js/action.js"%}"></script>
+        <script src="{% static "js/rating.js"%}"></script>
+
         {% block script%}
 
         {% endblock %}

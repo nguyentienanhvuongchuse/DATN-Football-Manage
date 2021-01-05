@@ -1,14 +1,14 @@
 {% extends "base/index.html" %}
-{% block title %} Time {% endblock %}
+{% block title %} Thời gian {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
         <table class="table border-bodered table-manager">
             <thead>
                 <tr>
-                <th scope="col"> Thoi Gian </th>
-                <th scope="col"> Gia tien </th>
-                <th scope="col"> Tuy chon </th>
+                <th scope="col"> Thời gian </th>
+                <th scope="col"> Giá tiền </th>
+                <th scope="col"> Tùy chọn </th>
                 </tr>
             </thead>
             <tbody>
@@ -17,14 +17,14 @@
                     <td> {{time.time}} </td>
                     <td> {{time.cost}} </td>
                     <td>
-                        <a href="{% url "update_time" time.id%}" class="btn btn-primary"> Sua </a>
-                        <a href="{% url "delete_time" time.id%}" class="btn btn-danger"> Xoa </a>
+                        <a href="{% url "update_time" time.id%}" class="btn btn-primary"> Sửa </a>
+                        <a href="{% url "delete_time" time.id%}" class="btn btn-danger"> Xóa </a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <h2>Them moi</h2>
+        <h2>Thêm mới</h2>
         <hr>
         <form method="POST">
             {% csrf_token %}
@@ -34,7 +34,7 @@
                 <hr>
             {% endfor %}
 
-            <input type="submit" name="Submit" class="btn btn-primary">
+            <input type="submit" name="Thêm mới" class="btn btn-primary">
         </form>
     </div>
 {% endblock %}

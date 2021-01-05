@@ -281,7 +281,7 @@ position: relative;
 transition-property: color;
 -webkit-transition-duration: 0.5s;
 transition-duration: 0.5s; }
-button:before {
+/* button:before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -303,7 +303,7 @@ button:hover:before {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
     -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
-    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); } */
 
 @media (max-width: 991px) {
 .inner {
@@ -368,4 +368,16 @@ form {
 .reply {
     display: none;
     margin-left: 30px;
+}
+.rating{
+    padding: 0px;
+}
+.checked {
+    color: orange;
+}
+.btn-rating{
+    background-color: inherit !important;
+    border: 0px solid !important;
+}
+.rate-form button{
 }

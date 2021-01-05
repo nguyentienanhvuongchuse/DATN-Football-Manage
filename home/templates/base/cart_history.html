@@ -1,25 +1,25 @@
 {% extends "base/index.html"%}
-{% block title %}Order{% endblock title %}
+{% block title %}Lịch sử{% endblock title %}
 {% block content %}
 <div class="col-lg-9 box-booking">
 
     <div class="row status">
         <div class="col-lg-6 status-yard">
-            <a href="{% url "cart"%}">Dang xu ly</a>
+            <a href="{% url "cart"%}">Đang xử lý</a>
         </div>
         <div class="col-lg-6 status-yard">
-            <a href="{% url "history"%}"><b><u>Lich su</u></b></a>
+            <a href="{% url "history"%}"><b><u>Lịch sử</u></b></a>
         </div>
     </div>
 
     <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Location</th>
-      <th scope="col">Yard</th>
-      <th scope="col">Time</th>
-      <th scope="col">Cost</th>
-      <th scope="col">Status</th>
+      <th scope="col">Sân bóng</th>
+      <th scope="col">Sân</th>
+      <th scope="col">Thời gian</th>
+      <th scope="col">Giá tiền</th>
+      <th scope="col">Trạng thái</th>
     </tr>
   </thead>
   <tbody>

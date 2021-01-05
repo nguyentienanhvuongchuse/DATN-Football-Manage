@@ -1,5 +1,6 @@
 {% extends "base/index.html" %}
-{% block title%} Detail {% endblock title%}
+{% block title%} Chi tiết {% endblock title%}
+{% load static %}
 {% block content%}
 <div class="col-lg-9 content">
     <div class="row">
@@ -7,13 +8,23 @@
             <h3>{{ detail.name }}</h3>
         </div>
     <div class="col-sm-2">
-        <a href="{% url "time_booking" detail.id %}" class="btn btn-primary">Booking</a>
+        <a href="{% url "time_booking" detail.id %}" class="btn btn-primary">Đặt sân</a>
     </div>
-    <div class="col-xl-12">
-        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+    <div class="col-xl-12 rating">
+        <form class="rate-form" method="POST" id="{{rating.id}}">
+            {% csrf_token %}
+            <button type="submit" class="fa fa-star fa-2x btn-rating" id="first"></button>
+            <button type="submit" class="fa fa-star fa-2x btn-rating" id="second"></button>
+            <button type="submit" class="fa fa-star fa-2x btn-rating" id="third"></button>
+            <button type="submit" class="fa fa-star fa-2x btn-rating" id="fourth"></button>
+            <button type="submit" class="fa fa-star fa-2x btn-rating" id="fifth"></button>
+        </form>
+        <div id="confirm-box"></div>
     </div>
+    <br>
+
     <div class="col-xl-12 location">
-    <p>Adress: {{detail.address}}</p>
+    <p>Địa chỉ: {{detail.address}}</p>
     <p>SDT: {{detail.phone}}</p>
     </div>
     <div class="col-xl-12">

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MaxValueValidator, MinValueValidator
 from yard.models import *
 from django.contrib.auth.models import User
 # Create your models here.
@@ -35,6 +36,20 @@ class Comment(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     reply = models.ForeignKey("Comment", null=True, related_name="replies", on_delete=models.CASCADE)
+
+class Rating(models.Model):
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    score = models.IntegerField(default=0,
+        validators=  [
+            MaxValueValidator(5),
+            MinValueValidator(0),
+        ]
+    )
+    create_at = models.DateField(auto_now_add=True,blank=True)
+    update_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return str(self.pk)
 
 class BookingView(models.Model):
     id = models.BigIntegerField(primary_key=True)

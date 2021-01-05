@@ -1,19 +1,19 @@
 {% extends "base/index.html" %}
-{% block title %} Yard Manage {% endblock %}
+{% block title %} Quản lý sân {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
         <div class="card card-total">
             <div class="card-body">
-                <a href="{% url "create_yard" %}" class="btn btn-primary">Them moi</a>
+                <a href="{% url "create_yard" %}" class="btn btn-primary">Thêm mới</a>
             </div>
         </div>
         <table class="table border-bodered table-manager">
             <thead>
             <tr>
-                <th scope="col"> Ma san </th>
-                <th scope="col"> Loai san </th>
-                <th scope="col"> Tuy chon </th>
+                <th scope="col"> Mã sân </th>
+                <th scope="col"> Loại sân </th>
+                <th scope="col"> Tùy chọn </th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +22,8 @@
                 <td> {{yard.code}} </td>
                 <td> {{yard.type}} </td>
                 <td>
-                    <a href="{% url "update_yard" yard.id %}" class="btn btn-success">Sua</a>
-                    <a href="{% url "delete_yard" yard.id %}" class="btn btn-danger">Xoa</a>
+                    <a href="{% url "update_yard" yard.id %}" class="btn btn-success">Sửa</a>
+                    <a href="{% url "delete_yard" yard.id %}" class="btn btn-danger">Xóa</a>
                 </td>
             </tr>
             {%endfor%}
