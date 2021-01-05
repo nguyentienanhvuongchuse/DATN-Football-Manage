@@ -1,14 +1,14 @@
 {% extends "base/index.html" %}
-{% block title %} Detail yard {% endblock %}
+{% block title %} Chi tiết sân {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
         <form method="POST">
-            <a href="{% url "create_time" yard.id %}" class="btn btn-info">Gia tien</a>
+            <a href="{% url "create_time" yard.id %}" class="btn btn-info">Giá tiền</a>
             <br>
             {% csrf_token %}
             {{form}}
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Thực hiện">
         </form>
     </div>
 {% endblock %}

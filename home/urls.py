@@ -24,4 +24,6 @@ urlpatterns = [
     path("hc/", views.haichau, name = "hc"),
     path("cl/", views.camle, name = "cl"),
     path("hv/", views.hoavang, name = "hv"),
+
+    path("rate/", views.rate, name="rate")
 ]

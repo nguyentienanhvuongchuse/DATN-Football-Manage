@@ -1,5 +1,5 @@
 {% extends "base/index.html" %}
-{% block title %} Delete yard {% endblock %}
+{% block title %} Xóa thời gian {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
@@ -11,8 +11,8 @@
                 <div>{{time.time}}</div>
                 <div class="card-body">
                     {% csrf_token %}
-                    <input type="submit" value="ok" class="btn btn-danger">
-                    <a href="{% url "create_time" time.yard_id %}" class="btn btn-primary">Tro ve</a>
+                    <input type="submit" value="Xóa" class="btn btn-danger">
+                    <a href="{% url "create_time" time.yard_id %}" class="btn btn-primary">TTrở về</a>
                 </div>
                 </div>
         </form>

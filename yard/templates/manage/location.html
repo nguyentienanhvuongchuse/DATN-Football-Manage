@@ -1,5 +1,5 @@
 {% extends "base/index.html" %}
-{% block title %} Location Manage {% endblock %}
+{% block title %} Quản lý sân {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
@@ -7,7 +7,7 @@
             {% csrf_token %}
             {{form.media}}
             {{form}}
-            <input type="submit" class="btn btn-success" value="Save">
+            <input type="submit" class="btn btn-success" value="Lưu">
         </form>
     </div>
 {% endblock %}

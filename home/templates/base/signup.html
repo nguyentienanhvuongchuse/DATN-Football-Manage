@@ -1,22 +1,22 @@
 {% extends "base/index.html"%}
-{% block title %} Signup {% endblock title%}
+{% block title %} Đăng kí {% endblock title%}
 {% block content %}
 <div class="col-lg-9">
     <form method="POST" id="signup_form">
         {% csrf_token %}
-        <h3>Registration Form</h3>
+        <h3>Đăng kí tài khoản</h3>
         <div class="form-group">
             <div class="form-wrapper">
-                <label for="">First Name</label>
+                <label for="">Tên</label>
                 <input type="text" class="form-control" name="firstname" id="firstname">
             </div>
             <div class="form-wrapper">
-                <label for="">Last Name</label>
+                <label for="">Họ</label>
                 <input type="text" class="form-control" name="lastname">
             </div>
         </div>
         <div class="form-wrapper">
-            <label for="">Username</label>
+            <label for="">Tài khoản</label>
             <input type="text" class="form-control" name="username">
         </div>
         <div class="form-wrapper">
@@ -24,22 +24,22 @@
             <input type="email" class="form-control" name="email">
         </div>
         <div class="form-wrapper">
-            <label for="">NumberPhone</label>
+            <label for="">Số điện thoại</label>
             <input type="text" class="form-control" name="phone">
         </div>
         <div class="form-wrapper">
-            <label for="">Address</label>
+            <label for="">Địa chỉ</label>
             <input type="text" class="form-control" name="address">
         </div>
         <div class="form-wrapper">
-            <label for="">Password</label>
+            <label for="">Mật khẩu</label>
             <input type="password" class="form-control" name="password" id="pw">
         </div>
         <div class="form-wrapper">
-            <label for="">Confirm Password</label>
+            <label for="">Nhập lại mật khẩu</label>
             <input type="password" class="form-control" name="password2">
         </div>
-        <button type="submit" class="signup">Register Now</button>
+        <button type="submit" class="signup">Đăng kí ngay</button>
     </form>
 </div>
 {% endblock content %}

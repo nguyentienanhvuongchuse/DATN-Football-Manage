@@ -46,6 +46,7 @@ def follow_location(request,obj):
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
     comment = Comment.objects.filter(location=pk)
+    rating = Rating.objects.get(location=pk)
     form = CommentForm()
     if request.method == "POST":
         form = CommentForm(request.POST or None)
@@ -58,8 +59,18 @@ def detail(request, pk):
             comment = Comment.objects.create(author_id=request.user.id, location_id=pk, body=content, reply=comment_qs)
             comment.save()
             return HttpResponseRedirect(request.path)
-    context = {"detail":detail,"comment":comment, "form":form}
+    context = {"detail":detail,"comment":comment, "form":form, "rating":rating}
     return render(request, "base/detail.html", context)
+
+def rate(request):
+    if request.method == "POST":
+        el_id = request.POST.get("el_id")
+        val = request.POST.get("val")
+        obj = Rating.objects.get(id=el_id)
+        obj.score = val
+        obj.save()
+        return JsonResponse({"success":"true", "score":val}, safe=False)
+    return JsonResponse({"success":"false"})
 
 @login_required(login_url="login")
 def time_booking(request,pk):

@@ -1,10 +1,10 @@
-<a href="#" class="btn btn-primary btn-booking" data-toggle="modal" data-target="#exampleModal{{booking.id}}">Handle</a>
+<a href="#" class="btn btn-primary btn-booking" data-toggle="modal" data-target="#exampleModal{{booking.id}}">Xử lý</a>
 
 <div class="modal fade" id="exampleModal{{booking.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Xu ly</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Xử lý</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -17,7 +17,7 @@
                     {% csrf_token %}
                     <input type="hidden" value="{{booking.booking_id}}" name="booking_id">
                     <input type="hidden" value="XN" name="handle">
-                    <input type="submit" value="Accept" class="btn btn-success">
+                    <input type="submit" value="Xác nhận " class="btn btn-success">
                 </form>
             </div>
 
@@ -26,7 +26,7 @@
                     {% csrf_token %}
                     <input type="hidden" value="{{booking.booking_id}}" name="booking_id">
                     <input type="hidden" value="TC" name="handle">
-                    <input type="submit" value="Close" class="btn btn-danger">
+                    <input type="submit" value="Đóng sân" class="btn btn-danger">
                 </form>
             </div>
         </div>

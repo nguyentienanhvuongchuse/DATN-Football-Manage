@@ -1,11 +1,11 @@
 {% extends "base/index.html" %}
-{% block title%} Detail {% endblock title%}
+{% block title%} Phản hồi {% endblock title%}
 {% block content%}
 <div class="col-lg-9 content">
     <form method="POST" action="{% url "send_mail" %}">
         {% csrf_token %}
         <div>
-            <label>Ho ten</label>
+            <label>Họ và tên</label>
             <input type="text" class="form-control" name="name">
         </div>
         <div>
@@ -13,11 +13,11 @@
             <input type="text" class="form-control" name="email">
         </div>
         <div>
-            <label>Tieu de</label>
+            <label>Tiêu đề</label>
             <input type="text" class="form-control" name="subject" >
         </div>
         <div>
-            <label>Noi dung</label>
+            <label>Nội dung</label>
             <textarea name="message" id="" cols="30" rows="10" class="form-control"> </textarea>
         </div>
         <input type="submit" class="btn btn-success" value="Phan hoi">

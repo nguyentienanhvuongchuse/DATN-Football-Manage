@@ -1,20 +1,20 @@
 {% extends "base/index.html"%}
-{% block title %} Login {% endblock title%}
+{% block title %} Đăng nhập {% endblock title%}
 {% block content %}
 <div class="col-lg-9">
     <form method="POST" id="signup_form">
         {% csrf_token %}
-        <div class="title-form"><h3>Login</h3></div>
+        <div class="title-form"><h3>Đăng nhập</h3></div>
         <div class="form-wrapper">
-            <label for="">Username</label>
+            <label for="">Tài khoản</label>
             <input type="text" name="username" placeholder="Username" class="form-control">
         </div>
         <div class="form-wrapper">
-            <label for="">Password</label>
+            <label for="">Mật khẩu</label>
             <input type="password" name="password" placeholder="Password" class="form-control">
         </div>
-        <button type="submit" class="signup">Login</button>
+        <button type="submit" class="signup">Đăng nhập</button>
     </form>
-    <p>If you does not have account? <a href="{% url "signup" %}">Click here</a></p>
+    <p>Nếu bạn chưa có tài khoản ? <a href="{% url "signup" %}">Click vào đây</a></p>
 </div>
 {% endblock content%}

@@ -15,15 +15,15 @@
         <h5><strong>{{comment.author}}</strong></h5>
         <p>{{comment.date}}</p>
         <p>{{comment.body|linebreaks}}</p>
-        <button type="button" name="reply-btn" class="reply-btn">Reply</button>
+        <button type="button" name="reply-btn" class="reply-btn">Trả lời</button>
         <div class="reply">
             <form action="{% url 'detail' detail.id %}" method="POST">
                 {% csrf_token %}
-                <p><label>Reply:</label></p>
+                <p><label>Trả lời</label></p>
                 {{form.body}}
                 <input type="hidden" name="comment_id" value="{{comment.id}}">
                 <br/>
-                <input type="submit" value="Reply"/>
+                <input type="submit" value="Trả lời"/>
             </form>
             {% for reply in comment.replies.all %}
                 <h5><strong>{{reply.author}}</strong></h5>

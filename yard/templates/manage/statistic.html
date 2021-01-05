@@ -1,15 +1,15 @@
 {% extends "base/index.html" %}
-{% block title %} Statistic {% endblock %}
+{% block title %} Thống kê {% endblock %}
 
 {% block content%}
     <div class="col-lg-9 content">
-        <h2><b>Bieu do</b></h2>
+        <h2><b>Biểu đồ khung giờ đặt sân</b></h2>
         <div id="myChart">
 
         </div>
-        <p>Thong ke so gio dat san</p>
-        <h2><b>Thong ke</b></h2>
-        <p>Tong doanh thu: {{revenue.revenue}}</p>
+        <p>Thống kê số giờ đặt sân</p>
+        <h2><b>Thống kê</b></h2>
+        <p>Tổng doanh thu tháng: {{revenue.revenue}}</p>
     </div>
 {% endblock %}
 {% block script%}

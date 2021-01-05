@@ -1,17 +1,17 @@
 {% extends "base/index.html"%}
-{% block title %}Information{% endblock title %}
+{% block title %}Thông tin cá nhân{% endblock title %}
 {% block content %}
     <div class="col-lg-9 box-booking">
             <form method="POST" id="signup_form">
         {% csrf_token %}
-        <h3>Registration Form</h3>
+        <h3>Thông tin cá nhân</h3>
         <div class="form-group">
             <div class="form-wrapper">
-                <label for="">First Name</label>
+                <label for="">Tên</label>
                 <input type="text" class="form-control" name="firstname" id="firstname" value="{{user.first_name}}">
             </div>
             <div class="form-wrapper">
-                <label for="">Last Name</label>
+                <label for="">Họ</label>
                 <input type="text" class="form-control" name="lastname" value="{{user.last_name}}">
             </div>
         </div>
@@ -20,14 +20,14 @@
             <input type="email" class="form-control" name="email" value="{{user.email}}">
         </div>
         <div class="form-wrapper">
-            <label for="">NumberPhone</label>
+            <label for="">Số điện thoại</label>
             <input type="text" class="form-control" name="phone" value={{detail.phone}}>
         </div>
         <div class="form-wrapper">
-            <label>Address</label>
+            <label>Địa chỉ</label>
             <input type="text" class="form-control" name="address" value="{{detail.address}}">
         </div>
-        <button type="submit" class="signup">Update</button>
+        <button type="submit" class="signup">Lưu thay đổi</button>
     </form>
     </div>
 {% endblock content %}
