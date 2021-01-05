@@ -4,11 +4,19 @@
 {% block content%}
     <div class="col-lg-9 content">
         <form method="POST">
-            <a href="{% url "create_time" yard.id %}" class="btn btn-info">Giá tiền</a>
             <br>
             {% csrf_token %}
-            {{form}}
-            <input type="submit" class="btn btn-primary" value="Thực hiện">
+            <div>
+                <label>Mã sân</label>
+                {{form.code}}
+            </div>
+            <div>
+                <label>Loại sân</label>
+                {{form.type}}
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Lưu">
+            <a href="{% url "create_time" yard.id %}" class="btn btn-info ">Giá tiền</a>
         </form>
     </div>
 {% endblock %}

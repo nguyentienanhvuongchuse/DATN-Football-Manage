@@ -5,7 +5,15 @@
     <div class="col-lg-9 content">
         <form action="" method="POST">
             {% csrf_token %}
-            {{form}}
+            <div>
+                <label>Mã sân</label>
+                {{form.time}}
+            </div>
+            <div>
+                <label>Giá tiền</label>
+                {{form.cost}}
+            </div>
+            <br>
             <input type="submit" value="Lưu" class="btn btn-primary">
             <a href="{% url "create_time" time.yard_id %}" class="btn btn-success">Trở về</a>
         </form>

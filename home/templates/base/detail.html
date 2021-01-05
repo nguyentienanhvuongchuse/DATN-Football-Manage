@@ -3,6 +3,9 @@
 {% load static %}
 {% block content%}
 <div class="col-lg-9 content">
+    {% for message in messages %}
+        <p id="success">{{message}}</p>
+    {% endfor %}
     <div class="row">
         <div class="col-xl-10">
             <h3>{{ detail.name }}</h3>
@@ -27,7 +30,7 @@
     <p>Địa chỉ: {{detail.address}}</p>
     <p>SDT: {{detail.phone}}</p>
     </div>
-    <div class="col-xl-12">
+    <div class="col-xl-12 body-detail">
     <p class="content-yard">
         {{detail.description|safe}}
     </p>

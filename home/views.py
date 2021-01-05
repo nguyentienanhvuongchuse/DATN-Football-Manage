@@ -1,6 +1,7 @@
 import json
 from django.core import serializers
 from django.shortcuts import render
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
@@ -45,7 +46,7 @@ def follow_location(request,obj):
 
 def detail(request, pk):
     detail = Location.objects.get(id=pk)
-    comment = Comment.objects.filter(location=pk)
+    comment = Comment.objects.filter(location=pk, reply__isnull=True).order_by("-date")
     rating = Rating.objects.get(location=pk)
     form = CommentForm()
     if request.method == "POST":
@@ -58,6 +59,7 @@ def detail(request, pk):
                 comment_qs = Comment.objects.get(id=reply_id)
             comment = Comment.objects.create(author_id=request.user.id, location_id=pk, body=content, reply=comment_qs)
             comment.save()
+            messages.info(request, 'Thao tác thành công, cảm ơn ban!')
             return HttpResponseRedirect(request.path)
     context = {"detail":detail,"comment":comment, "form":form, "rating":rating}
     return render(request, "base/detail.html", context)
@@ -157,6 +159,8 @@ def signin(request):
         if user is not None:
             login(request,user)
             return redirect("home")
+        else:
+            messages.info(request, 'Tài khoản hoặc mật khẩu không hợp lệ')
     context = {}
     return render(request, "base/login.html", context)
 

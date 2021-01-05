@@ -5,8 +5,27 @@
     <div class="col-lg-9 content">
         <form method="POST" class="form-group">
             {% csrf_token %}
+            <div>
+                <label>Tên sân</label>
+                {{form.name}}
+            </div>
+            <div>
+                <label>Số điện thoại</label>
+                {{form.phone}}
+            </div>
+            <div>
+                <label>Địa chỉ</label>
+                {{form.address}}
+            </div>
+            <div>
+                <label>Quận (huyện)</label>
+                {{form.district}}
+            </div>
+            <div>
+                <label>Chi tiết</label>
+                {{form.description}}
+            </div>
             {{form.media}}
-            {{form}}
             <input type="submit" class="btn btn-success" value="Lưu">
         </form>
     </div>
